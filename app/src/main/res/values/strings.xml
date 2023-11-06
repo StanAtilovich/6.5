@@ -1,0 +1,91 @@
+<resources>
+    <string name="app_name">6.5</string>
+    <string name="add">add</string>
+    <string name="button_text">Рандомный выбор</string>
+    <string name="update">update</string>
+    <string name="delete">delete</string>
+    <string name="button">Назад</string>
+    <string name="character">character</string>
+    <string name="characterList">лист всех</string>
+    <string name="onlySlizerin">только слизеренцы</string>
+
+    <!-- Auth-->
+    <string name="auth_category">Категория</string>
+    <string name="sing_up">sing_up</string>
+    <string name="sing_in">sing_in</string>
+    <string name="sing_out">sing_out</string>
+    <string name="have_you_forgotten_your_password">Have you forgotten your password</string>
+    <string name="please_sing_up">Sing up</string>
+    <string name="email">Email</string>
+    <string name="password">password</string>
+    <string name="SingUp">зарегестрироваться</string>
+    <string name="Usercreationfailed">User creation failed</string>
+    <string name="sucsesful">Успешно</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="auth_caterogy">Account</string>
+    <string name="tv_forget_pasword_text"><u>Have you forgotten your password?</u></string>
+    <string name="tv_sign_up">Please, sign up!</string>
+    <string name="tv_sign_in">Please, sign in!</string>
+    <string name="ed_email_hint">Email</string>
+    <string name="ed_password_hint">Password</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="msg_verification_success">Verification was successful! Check your email!</string>
+    <string name="msg_sign_in">You have successfully signed in to your account</string>
+    <string name="msg_sign_up">You have successfully up in to your account</string>
+    <string name="msg_sign_out">Your are signed out of your account</string>
+    <string name="msg_reset_password">Password reset</string>
+    <string name="msg_link_account">Email successfully linked to Google account</string>
+    <string name="title_forum">Forum</string>
+    <string name="msg_verification_failed">провалена верификация</string>
+    <string name="sing_in_error">Sing in ERROR!!!</string>
+    <string name="msg_reset_password_error">Щшибка сброса пароля</string>
+    <string name="default_web_client_id" translatable="false">495210879820-9h7gtd03lol0b1mcd1e80fb3sgl0tr1q.apps.googleusercontent.com</string>
+    <string name="forumED">Начните вводить информацию!!</string>
+    <string name="title_activity_sing_in">SingInActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
+    <string name="btn_text">Рандом</string>
+    <string name="only_slizerin">Только Слизеренцы</string>
+</resources>

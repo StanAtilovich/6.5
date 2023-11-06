@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn ="navigation_view">
+
+    <item
+        android:id="@+id/auth_category"
+        android:title="@string/auth_category">
+        <menu>
+
+            <item
+                android:id="@+id/sing_in"
+                android:title="@string/sing_in"/>
+
+            <item
+                android:id="@+id/sing_up"
+                android:title="@string/sing_up"/>
+
+            <item
+                android:id="@+id/sing_out"
+                android:title="@string/sing_out"/>
+
+        </menu>
+    </item>
+</menu>
