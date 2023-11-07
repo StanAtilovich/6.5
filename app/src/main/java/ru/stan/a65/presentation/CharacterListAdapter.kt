@@ -30,7 +30,7 @@ class CharacterListAdapter
     override fun onBindViewHolder(holder: CharacterListViewHolder, position: Int) {
         val characterItem = getItem(position)
         holder.binding.imageCharacter.load(characterItem.imageUrl)
-       // holder.binding.tvname.text = characterItem.name
+        holder.binding.tvName.text = characterItem.name
         holder.binding.tvHouse.text = characterItem.hogwartsHouse
     }
 }

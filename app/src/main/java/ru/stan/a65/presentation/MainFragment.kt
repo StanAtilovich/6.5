@@ -44,6 +44,9 @@ class MainFragment : Fragment() {
                 binding.progressBar.isVisible = it is ProgressState.Loading
             }
         }
+        binding.buttonRandomCharacter.setOnClickListener {
+            viewModel.randomCharacter()
+        }
 
     }
 

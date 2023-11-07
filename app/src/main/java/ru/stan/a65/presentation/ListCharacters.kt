@@ -8,6 +8,8 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import ru.stan.a65.databinding.FragmentListCharactersBinding
 
@@ -30,18 +32,37 @@ class ListCharacters : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val rcAdapter = CharacterListAdapter()
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerCharacterList.adapter = rcAdapter
 
+
+
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.characterList.collect {
-                rcAdapter.submitList(it)
+            viewModel.onlySlizerin.collect {
+                rcAdapter.submitList(viewModel.characterList.value)
             }
+        }
+
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.state.collect{
+                //  binding.progressBar.isVisible = it is ProgressState.Loading
+            }
+        }
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.refresh()
         }
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.state.collect{
-             //   binding.progressBar.isVisible = it is ProgressState.Loading
+                binding.swipeRefreshLayout.isRefreshing= false
             }
         }
+        //метод такойже что и выше
+        viewModel.state.onEach {
+            binding.swipeRefreshLayout.isRefreshing = false
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     override fun onDestroy() {
