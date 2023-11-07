@@ -1,4 +1,4 @@
-package ru.stan.a65.presentation.AllUtils
+package ru.stan.a65.data.firebase
 
 import android.content.Intent
 import com.firebase.ui.auth.AuthUI
@@ -8,11 +8,9 @@ import ru.stan.a65.R
 import ru.stan.a65.presentation.MainActivity
 import ru.stan.a65.presentation.SingInActivity
 
-class FirebaseUtils(
-    private val mainActivity: MainActivity,
-
-    ) {
-    private val singInActivity = SingInActivity()
+class AuthUtils(
+    private val mainActivity : MainActivity
+) {
 
     private val auth = Firebase.auth
     private val authUi = AuthUI.getInstance()
@@ -21,9 +19,11 @@ class FirebaseUtils(
     private fun isDoneAuth(): Boolean =
         auth.currentUser != null
 
+
+    private val singInActivityClass = SingInActivity::class.java
     fun singUpIn() {
         if (!isDoneAuth()) {
-            val intent = Intent(mainActivity, singInActivity::class.java)
+            val intent = Intent(mainActivity, singInActivityClass)
             mainActivity.startActivity(intent)
             mainActivity.finish()
         }
@@ -32,9 +32,11 @@ class FirebaseUtils(
     fun singOut() {
         authUi.signOut(mainActivity)
     }
-    fun getUserName()=auth.currentUser?.displayName ?: ANONYMOUS
-    companion object{
-        fun getIntentForSingIn()=AuthUI.getInstance().createSignInIntentBuilder()
+
+    fun getUserName() = auth.currentUser?.displayName ?: ANONYMOUS
+
+    companion object {
+        fun getIntentForSingIn() = AuthUI.getInstance().createSignInIntentBuilder()
             .setLogo(R.drawable.harry)
             .setAvailableProviders(
                 listOf(
@@ -45,6 +47,7 @@ class FirebaseUtils(
             )
             .build()
 
-        private const val ANONYMOUS="Аноним!!!!"
+        private const val ANONYMOUS = "Аноним!!!!"
     }
 }
+

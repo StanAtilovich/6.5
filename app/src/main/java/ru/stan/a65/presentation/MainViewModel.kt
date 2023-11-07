@@ -14,7 +14,6 @@ import ru.stan.a65.domain.usecase.GetCharacterUseCase
 
 
 class MainViewModel(
-    private val repository: CharacterRepositoryImpl,
     private val getCharacterListUseCase: GetCharacterListUseCase,
     private val getCharacterUseCase: GetCharacterUseCase
 ) : ViewModel() {

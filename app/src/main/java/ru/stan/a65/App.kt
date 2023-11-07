@@ -1,34 +1,43 @@
 package ru.stan.a65
 
 import android.app.Application
-import androidx.room.Room
-import com.google.firebase.crashlytics.FirebaseCrashlytics
+import ru.stan.a65.data.firebase.FirebaseUtils
 import ru.stan.a65.data.local.database.CharacterDatabase
+import ru.stan.a65.presentation.NotificationUtils
+import ru.stan.a65.presentation.PermissionUtils
 
 
 class App : Application() {
 
+    lateinit var permissionService: PermissionUtils
+        private set
     lateinit var db: CharacterDatabase
+        private set
+
+    lateinit var firebaseInstance: FirebaseUtils
+        private set
+
+    lateinit var notificationService: NotificationUtils
         private set
 
     override fun onCreate() {
         super.onCreate()
 
-        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(
-            true
-        )
-
         INSTANCE = this
 
-        db = Room
-            .databaseBuilder(
-                this,
-                CharacterDatabase::class.java,
-                "db"
-            )
-//            .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
-            .fallbackToDestructiveMigration()
-            .build()
+        //db
+        db = CharacterDatabase.getInstance(INSTANCE)
+
+        firebaseInstance = FirebaseUtils.getInstance(this)
+
+        //выключаем крашлитиксы
+        firebaseInstance.crashlytics.setCrashlyticsCollectionEnabled(false)
+
+        //сдесь включаем NotificationUtils
+        notificationService = NotificationUtils.getInstance(this)
+        notificationService.createNotificationChanel()
+        permissionService= PermissionUtils.getInstance(this)
+
     }
 
     companion object {

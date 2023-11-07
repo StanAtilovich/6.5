@@ -13,7 +13,7 @@ class MainViewModelFactory: ViewModelProvider.Factory {
             val repo = CharacterRepositoryImpl
             val useCase = GetCharacterUseCase(repo)
             val useCase2 = GetCharacterListUseCase(repo)
-            return MainViewModel(repo,useCase2,useCase) as T
+            return MainViewModel(useCase2,useCase) as T
         }
         throw IllegalArgumentException("неизвестное имя классса")
     }

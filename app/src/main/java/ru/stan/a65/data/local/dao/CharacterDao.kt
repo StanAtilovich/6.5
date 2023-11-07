@@ -6,21 +6,24 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import ru.stan.a65.data.entity.CharacterDbModel
 import ru.stan.a65.data.local.entity.CharacterDb
 
 @Dao
 interface CharacterDao {
 
-    @Query("SELECT * FROM character")
-    suspend fun getAll(): List<CharacterDb>
+    @Query("SELECT * FROM characters")
+    suspend fun getAllCharacters(): List<CharacterDbModel>
+
+    @Query("SELECT * FROM characters WHERE id= :id LIMIT 1")
+    suspend fun getAllCharacterById(id: Int = 1): CharacterDbModel
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(characterDb: CharacterDb)
+    suspend fun insertCharacterItem(character: CharacterDbModel)
 
-    @Update
-    suspend fun update(characterDb: CharacterDb)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertCharacterList(characters: List<CharacterDbModel>)
 
-    @Delete
-    suspend fun delete(characterDb: CharacterDb)
-
+    @Query("DELETE FROM characters")
+    suspend fun deleteAll()
 }
