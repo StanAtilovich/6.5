@@ -7,8 +7,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AppCompatActivity
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
+import ru.stan.a65.data.firebase.AuthUtils
 import ru.stan.a65.databinding.ActivitySingInBinding
-import ru.stan.a65.presentation.AllUtils.FirebaseUtils
 
 class SingInActivity : AppCompatActivity() {
 
@@ -31,7 +31,7 @@ class SingInActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         singInLauncher.launch(
-            FirebaseUtils.getIntentForSingIn()
+            AuthUtils.getIntentForSingIn()
         )
     }
 

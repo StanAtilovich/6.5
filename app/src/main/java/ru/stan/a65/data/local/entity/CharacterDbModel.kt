@@ -1,4 +1,4 @@
-package ru.stan.a65.data.entity
+package ru.stan.a65.data.local.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -7,6 +7,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import ru.stan.a65.R
 import ru.stan.a65.databinding.ForumItemBinding
+import ru.stan.a65.domain.model.ForumItem
 
 class ForumAdapter(
     private val options: FirebaseRecyclerOptions<ForumItem>

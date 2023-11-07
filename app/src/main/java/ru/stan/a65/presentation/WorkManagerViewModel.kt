@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import ru.stan.a65.App
-import ru.stan.a65.data.entity.CharacterDbModel
+import ru.stan.a65.data.local.entity.CharacterDbModel
 import ru.stan.a65.presentation.worker.CashingDataWorker
 
 

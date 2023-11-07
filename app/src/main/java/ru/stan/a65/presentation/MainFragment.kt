@@ -31,21 +31,20 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.character.collect {
-                binding.tvName.text = it.name
                 binding.tvHouse.text = it.hogwartsHouse
                 binding.imageCharacter.load(it.imageUrl)
+
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.state.collect {
                 binding.progressBar.isVisible = it is ProgressState.Loading
             }
-        }
-        binding.buttonRandomCharacter.setOnClickListener {
-            viewModel.randomCharacter()
         }
 
     }

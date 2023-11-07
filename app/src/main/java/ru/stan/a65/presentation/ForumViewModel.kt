@@ -3,19 +3,23 @@ package ru.stan.a65.presentation
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.ImageButton
-import android.widget.TextView
 import androidx.lifecycle.ViewModel
+import ru.stan.a65.App
 import ru.stan.a65.R
-import ru.stan.a65.presentation.AllUtils.DataBaseUtils
+import ru.stan.a65.domain.usecase.SendMessageUseCase
 
-class ForumViewModel : ViewModel() {
 
-    fun sendTextToFirebaseDb(text: String, databaseUtils: DataBaseUtils) {
-        databaseUtils.sendTextToDb(text)
+class ForumViewModel(
+    private val SendMessageUseCase: SendMessageUseCase
+) : ViewModel() {
+
+    fun getRecyclerAdapter(): ForumAdapter {
+        val options = App.INSTANCE.firebaseInstance.getFirebaseRecyclerOptions()
+        return ForumAdapter(options)
     }
 
-    fun retreiveDataForumBDd(textView: TextView, databaseUtils: DataBaseUtils) {
-        databaseUtils.retreiveDataFromDb(textView)
+    fun sendTextToFirebaseDb(text: String) {
+        SendMessageUseCase(text)
     }
 
     inner class TextWatcherForEditText(
@@ -37,8 +41,3 @@ class ForumViewModel : ViewModel() {
 
     }
 }
-
-data class ForumItem(
-    val text: String? = "",
-    val user: String? = ""
-)

@@ -18,7 +18,9 @@ import com.google.firebase.storage.ktx.storage
 import ru.stan.a65.databinding.FragmentForumBinding
 
 class ForumFragment : Fragment() {
-    private val viewModel: ForumViewModel by viewModels()
+    private val viewModel: ForumViewModel by viewModels{
+        ForumViewModelFactory()
+    }
     private var _binding: FragmentForumBinding? = null
 
     private lateinit var adapter: ForumAdapter
@@ -73,8 +75,8 @@ class ForumFragment : Fragment() {
             if (text.isNotEmpty()) {
                 viewModel.sendTextToFirebaseDb(
                     text,
-                    getDbUtils()
-                )
+
+                    )
                 binding.edText.setText("")
             }
         }
@@ -89,7 +91,7 @@ class ForumFragment : Fragment() {
 
     private fun setRecyclerView() {
         val layoutManager = LinearLayoutManager(getMainActivity())
-        adapter = ForumAdapter(getDbUtils().getFirebaseRecyclerOptions())
+        adapter = viewModel.getRecyclerAdapter()
         layoutManager.stackFromEnd = true
         binding.rvData.adapter = adapter
         binding.rvData.layoutManager = layoutManager
@@ -119,7 +121,7 @@ class ForumFragment : Fragment() {
         _binding = null
     }
 
-    private fun getDbUtils() = getMainActivity().dataBaseUtils
+
     private fun getMainActivity() = (requireActivity() as MainActivity)
 
 }

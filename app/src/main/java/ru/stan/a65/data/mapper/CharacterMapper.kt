@@ -1,7 +1,7 @@
 package ru.stan.a65.data.mapper
 
 import ru.stan.a65.data.dto.CharacterDto
-import ru.stan.a65.data.entity.CharacterDbModel
+import ru.stan.a65.data.local.entity.CharacterDbModel
 import ru.stan.a65.domain.model.CharacterItem
 
 class CharacterMapper {

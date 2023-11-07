@@ -5,7 +5,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import ru.stan.a65.presentation.ForumItem
+import ru.stan.a65.domain.model.ForumItem
 import ru.stan.a65.presentation.MainActivity
 
 class FirebaseUtils() {

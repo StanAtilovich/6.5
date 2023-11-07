@@ -59,10 +59,6 @@ class ListCharacters : Fragment() {
                 binding.swipeRefreshLayout.isRefreshing= false
             }
         }
-        //метод такойже что и выше
-        viewModel.state.onEach {
-            binding.swipeRefreshLayout.isRefreshing = false
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     override fun onDestroy() {

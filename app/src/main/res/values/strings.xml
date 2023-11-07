@@ -88,4 +88,6 @@
     </string>
     <string name="btn_text">Рандом</string>
     <string name="only_slizerin">Только Слизеренцы</string>
+    <string name="title_room">RoomDb</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
 </resources>

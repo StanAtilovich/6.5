@@ -2,8 +2,9 @@ package ru.stan.a65.data.repository
 
 import android.app.Application
 import ru.stan.a65.App
+import ru.stan.a65.domain.model.ForumItem
 import ru.stan.a65.domain.repository.ForumRepository
-import ru.stan.a65.presentation.ForumItem
+
 
 
 class ForumRepositoryImpl(

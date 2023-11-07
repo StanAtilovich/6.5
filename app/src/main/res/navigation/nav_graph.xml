@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@+id/navigation_forum">
+    app:startDestination="@+id/navigation_room_db">
     <fragment
         android:id="@+id/navigation_character"
         android:name="ru.stan.a65.presentation.MainFragment"
@@ -23,4 +23,10 @@
         android:name="ru.stan.a65.presentation.ForumFragment"
         android:label="fragment_forum"
         tools:layout="@layout/fragment_forum" />
+    <fragment
+        android:id="@+id/navigation_room_db"
+        android:name="ru.stan.a65.presentation.WorkManagerFragment"
+        android:label="RoomFragment"
+        tools:layout="@layout/fragment_work_manager" />
+
 </navigation>

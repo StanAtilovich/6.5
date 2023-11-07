@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import ru.stan.a65.data.repository.CharacterRepositoryImpl.getCharacters
 import ru.stan.a65.domain.model.CharacterItem
 import ru.stan.a65.domain.usecase.GetCharacterListUseCase
 

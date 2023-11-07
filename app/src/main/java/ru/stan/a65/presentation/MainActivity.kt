@@ -6,17 +6,14 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import ru.stan.a65.App
 import ru.stan.a65.R
 import ru.stan.a65.databinding.ActivityMainWithDrawerBinding
-import ru.stan.a65.presentation.AllUtils.DataBaseUtils
-import ru.stan.a65.presentation.AllUtils.FirebaseUtils
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainWithDrawerBinding
     private lateinit var navController: NavController
-    lateinit var authUtils: FirebaseUtils
-    lateinit var dataBaseUtils: DataBaseUtils
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,9 +21,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainWithDrawerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        App.INSTANCE.permissionService.initMainActivityContext(this)
+        App.INSTANCE.permissionService.checkPermissions()
 
-        authUtils = FirebaseUtils(this)
-        dataBaseUtils = DataBaseUtils(this)
+        initAuth()
 
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragment_container) as NavHostFragment
@@ -37,23 +35,38 @@ class MainActivity : AppCompatActivity() {
         binding.drawerNavView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.sing_up -> {
-                    authUtils.singUpIn()
+                    singUpIn()
                 }
 
+
                 R.id.sing_in -> {
-                    authUtils.singUpIn()
+                    singUpIn()
                 }
 
                 R.id.sing_out -> {
-                    authUtils.singOut()
+                    singOut()
                 }
             }
+
 
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             return@setNavigationItemSelectedListener true
         }
+        //   MessagingUtils().logToken()
+
+    }
 
 
+    private fun initAuth() {
+        App.INSTANCE.firebaseInstance.initAuthUtils(this)
+    }
+
+    private fun singUpIn() {
+        App.INSTANCE.firebaseInstance.authUtils.singUpIn()
+    }
+
+    private fun singOut() {
+        App.INSTANCE.firebaseInstance.authUtils.singOut()
     }
 
 
