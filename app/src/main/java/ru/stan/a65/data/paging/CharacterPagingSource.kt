@@ -2,29 +2,32 @@ package ru.stan.a65.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import kotlinx.coroutines.delay
+import ru.stan.a65.data.paging.api.RetrofitInstance
+import ru.stan.a65.data.paging.mapper.CharacterPagingMapper
 import ru.stan.a65.domain.model.CharacterPagingItem
-import java.lang.Math.max
+import kotlin.math.max
+import kotlin.math.min
 
 class CharacterPagingSource : PagingSource<Int, CharacterPagingItem>() {
+    private val api = RetrofitInstance
+    private val mapper = CharacterPagingMapper()
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CharacterPagingItem> {
-        val start = params.key ?: STARTING_KEY
-        val range = start.until(start + params.loadSize)
+        val page = params.key ?: STARTING_KEY
+        val range = (page..LAST_PAGE)
 
-        if (start != STARTING_KEY) delay(3_000)
-        return LoadResult.Page(
-            data = range.map { number ->
-                CharacterPagingItem(
-                    id = number.toString(),
-                    name = "Name of character $number"
+       return kotlin.runCatching {
+            mapper.mapDtoPagingToItemPaging(api.searchCharactersApi.getCharacters(page).data)
+        }.fold(
+            onSuccess = {
+                LoadResult.Page(
+                    data = it,
+                    prevKey = null,
+                    nextKey = if (page == LAST_PAGE) null else ensureValueKey(page + 1)
                 )
             },
-            prevKey = when (start) {
-                STARTING_KEY -> null
-                else -> ensureValueKey(range.first - params.loadSize)
-            },
-            nextKey = range.last + 1
+            onFailure = { LoadResult.Error(it) }
         )
+
     }
 
     override fun getRefreshKey(state: PagingState<Int, CharacterPagingItem>): Int? {
@@ -33,10 +36,11 @@ class CharacterPagingSource : PagingSource<Int, CharacterPagingItem>() {
         return ensureValueKey(character.id.toInt() - state.config.pageSize / 2)
     }
 
-    private fun ensureValueKey(key: Int) = max(STARTING_KEY, key)
+    private fun ensureValueKey(key: Int) = min(max(STARTING_KEY, key), LAST_PAGE)
 
     companion object {
         private const val STARTING_KEY = 1
+        private const val LAST_PAGE = 41
     }
 
 
