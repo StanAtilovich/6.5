@@ -2,8 +2,8 @@ package ru.stan.a65.presentation.ui.fragmentPaging
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import ru.stan.a65.databinding.CharacterItemBinding
@@ -11,7 +11,7 @@ import ru.stan.a65.domain.model.CharacterPagingItem
 
 
 class CharacterPagingListAdapter
-    : ListAdapter<CharacterPagingItem,
+    : PagingDataAdapter<CharacterPagingItem,
         CharacterPagingListAdapter.CharacterListViewHolder>(callback) {
 
     override fun onCreateViewHolder(
@@ -28,9 +28,11 @@ class CharacterPagingListAdapter
         holder: CharacterListViewHolder, position: Int
     ) {
         val characterItem = getItem(position)
-        holder.binding.imageCharacter.load(characterItem.imageUrl)
-        holder.binding.tvName.text = characterItem.name
-        holder.binding.tvHouse.text = characterItem.hogwartsHouse
+        characterItem?.imageUrl?.let {
+            holder.binding.imageCharacter.load(it)
+        }
+        holder.binding.tvName.text = characterItem?.name ?: "Имя неизвестна"
+        holder.binding.tvHouse.text = characterItem?.hogwartsHouse ?: "Нет данных о факультете"
     }
 
     inner class CharacterListViewHolder(
