@@ -1,4 +1,4 @@
-package ru.stan.a65.presentation
+package ru.stan.a65.presentation.ui.FragmentForum
 
 
 import android.content.Context
@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import ru.stan.a65.databinding.FragmentForumBinding
+import ru.stan.a65.presentation.ui.Activities.MainActivity
 
 class ForumFragment : Fragment() {
     private val viewModel: ForumViewModel by viewModels{

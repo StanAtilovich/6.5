@@ -1,4 +1,4 @@
-package ru.stan.a65.presentation
+package ru.stan.a65.presentation.Utils
 
 import android.Manifest
 import android.app.Application
@@ -9,11 +9,12 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import ru.stan.a65.presentation.ui.Activities.MainActivity
 
 class PermissionUtils(
     private val application: Application
 ) {
-    private lateinit  var mainActivity :MainActivity
+    private lateinit  var mainActivity : MainActivity
 
     private lateinit var launcher: ActivityResultLauncher<Array<String>>
 

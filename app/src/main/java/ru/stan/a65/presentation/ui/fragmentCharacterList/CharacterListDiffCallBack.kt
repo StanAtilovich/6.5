@@ -1,4 +1,4 @@
-package ru.stan.a65.presentation
+package ru.stan.a65.presentation.ui.fragmentCharacterList
 
 import androidx.recyclerview.widget.DiffUtil
 import ru.stan.a65.domain.model.CharacterItem

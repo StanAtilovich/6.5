@@ -1,4 +1,4 @@
-package ru.stan.a65.presentation
+package ru.stan.a65.presentation.ui.Activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
