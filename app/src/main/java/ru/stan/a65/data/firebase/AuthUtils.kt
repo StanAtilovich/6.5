@@ -5,8 +5,8 @@ import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import ru.stan.a65.R
-import ru.stan.a65.presentation.MainActivity
-import ru.stan.a65.presentation.SingInActivity
+import ru.stan.a65.presentation.ui.Activities.MainActivity
+import ru.stan.a65.presentation.ui.Activities.SingInActivity
 
 class AuthUtils(
     private val mainActivity : MainActivity

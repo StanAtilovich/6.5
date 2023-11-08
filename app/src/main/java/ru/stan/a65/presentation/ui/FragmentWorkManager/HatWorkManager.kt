@@ -1,4 +1,4 @@
-package ru.stan.a65.presentation
+package ru.stan.a65.presentation.ui.FragmentWorkManager
 
 import android.content.Context
 import android.util.Log

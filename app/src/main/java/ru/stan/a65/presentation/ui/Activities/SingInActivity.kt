@@ -1,4 +1,4 @@
-package ru.stan.a65.presentation
+package ru.stan.a65.presentation.ui.Activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -45,11 +45,11 @@ class SingInActivity : AppCompatActivity() {
                 "Error sing in! ${result.idpResponse?.error}",
                 Toast.LENGTH_LONG
             ).show()
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
 
-        startActivity(Intent(this,MainActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
 
     }

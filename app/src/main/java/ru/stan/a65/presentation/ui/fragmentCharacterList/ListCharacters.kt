@@ -1,15 +1,12 @@
-package ru.stan.a65.presentation
+package ru.stan.a65.presentation.ui.fragmentCharacterList
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import ru.stan.a65.databinding.FragmentListCharactersBinding
 

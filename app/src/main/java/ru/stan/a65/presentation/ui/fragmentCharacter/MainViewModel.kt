@@ -1,4 +1,4 @@
-package ru.stan.a65.presentation
+package ru.stan.a65.presentation.ui.fragmentCharacter
 
 import android.content.ContentValues
 import android.util.Log
@@ -7,9 +7,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import ru.stan.a65.data.repository.CharacterRepositoryImpl
 import ru.stan.a65.domain.model.CharacterItem
-import ru.stan.a65.domain.usecase.GetCharacterListUseCase
 import ru.stan.a65.domain.usecase.GetCharacterUseCase
 
 

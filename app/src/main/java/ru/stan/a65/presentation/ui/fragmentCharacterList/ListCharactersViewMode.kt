@@ -1,4 +1,4 @@
-package ru.stan.a65.presentation
+package ru.stan.a65.presentation.ui.fragmentCharacterList
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import ru.stan.a65.domain.model.CharacterItem
 import ru.stan.a65.domain.usecase.GetCharacterListUseCase
+import ru.stan.a65.presentation.ui.fragmentCharacter.ProgressState
 
 
 private const val TAG = "CharacterListViewModel55555"

@@ -6,7 +6,7 @@
     app:startDestination="@+id/navigation_room_db">
     <fragment
         android:id="@+id/navigation_character"
-        android:name="ru.stan.a65.presentation.MainFragment"
+        android:name="ru.stan.a65.presentation.ui.fragmentCharacter.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -15,17 +15,17 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_list_character"
-        android:name="ru.stan.a65.presentation.ListCharacters"
+        android:name="ru.stan.a65.presentation.ui.fragmentCharacterList.ListCharacters"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list_characters" />
     <fragment
         android:id="@+id/navigation_forum"
-        android:name="ru.stan.a65.presentation.ForumFragment"
+        android:name="ru.stan.a65.presentation.ui.FragmentForum.ForumFragment"
         android:label="fragment_forum"
         tools:layout="@layout/fragment_forum" />
     <fragment
         android:id="@+id/navigation_room_db"
-        android:name="ru.stan.a65.presentation.WorkManagerFragment"
+        android:name="ru.stan.a65.presentation.ui.FragmentWorkManager.WorkManagerFragment"
         android:label="RoomFragment"
         tools:layout="@layout/fragment_work_manager" />
 

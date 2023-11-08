@@ -1,4 +1,4 @@
-package ru.stan.a65.presentation
+package ru.stan.a65.presentation.ui.fragmentCharacterList
 
 
 import android.view.LayoutInflater
@@ -10,8 +10,9 @@ import ru.stan.a65.domain.model.CharacterItem
 
 
 class CharacterListAdapter
-    : androidx.recyclerview.widget.ListAdapter<CharacterItem,CharacterListAdapter.CharacterListViewHolder>(
-    callBack) {
+    : androidx.recyclerview.widget.ListAdapter<CharacterItem, CharacterListAdapter.CharacterListViewHolder>(
+    callBack
+) {
 
     class CharacterListViewHolder(val binding: CharacterItemBinding): RecyclerView.ViewHolder(binding.root)
     // {

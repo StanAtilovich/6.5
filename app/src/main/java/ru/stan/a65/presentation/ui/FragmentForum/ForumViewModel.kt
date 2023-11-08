@@ -1,4 +1,4 @@
-package ru.stan.a65.presentation
+package ru.stan.a65.presentation.ui.FragmentForum
 
 import android.text.Editable
 import android.text.TextWatcher

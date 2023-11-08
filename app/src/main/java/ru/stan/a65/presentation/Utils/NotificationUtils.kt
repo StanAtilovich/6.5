@@ -1,4 +1,4 @@
-package ru.stan.a65.presentation
+package ru.stan.a65.presentation.Utils
 
 import android.annotation.SuppressLint
 import android.app.Application
@@ -13,6 +13,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import ru.stan.a65.App
 import ru.stan.a65.R
+import ru.stan.a65.presentation.ui.Activities.MainActivity
 
 
 class NotificationUtils(

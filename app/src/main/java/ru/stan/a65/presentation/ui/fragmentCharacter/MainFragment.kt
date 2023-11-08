@@ -1,4 +1,4 @@
-package ru.stan.a65.presentation
+package ru.stan.a65.presentation.ui.fragmentCharacter
 
 import android.os.Bundle
 import android.view.LayoutInflater

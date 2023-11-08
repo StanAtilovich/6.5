@@ -1,4 +1,4 @@
-package ru.stan.a65.presentation
+package ru.stan.a65.presentation.ui.FragmentForum
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

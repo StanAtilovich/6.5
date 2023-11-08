@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="ru.stan.a65.presentation.ListCharactersViewModel" />
+            type="ru.stan.a65.presentation.ui.fragmentCharacterList.ListCharactersViewModel" />
 
         <import type="android.view.View" />
     </data>
@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context="ru.stan.a65.presentation.ListCharacters">
+        tools:context="ru.stan.a65.presentation.ui.fragmentCharacterList.ListCharacters">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
