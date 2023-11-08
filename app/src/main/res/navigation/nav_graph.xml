@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@+id/navigation_room_db">
+    app:startDestination="@+id/navigation_paging_example">
     <fragment
         android:id="@+id/navigation_character"
         android:name="ru.stan.a65.presentation.ui.fragmentCharacter.MainFragment"
@@ -20,13 +20,18 @@
         tools:layout="@layout/fragment_list_characters" />
     <fragment
         android:id="@+id/navigation_forum"
-        android:name="ru.stan.a65.presentation.ui.FragmentForum.ForumFragment"
+        android:name="ru.stan.a65.presentation.ui.fragmentForum.ForumFragment"
         android:label="fragment_forum"
         tools:layout="@layout/fragment_forum" />
     <fragment
         android:id="@+id/navigation_room_db"
-        android:name="ru.stan.a65.presentation.ui.FragmentWorkManager.WorkManagerFragment"
+        android:name="ru.stan.a65.presentation.ui.fragmentWorkManager.WorkManagerFragment"
         android:label="RoomFragment"
         tools:layout="@layout/fragment_work_manager" />
+    <fragment
+        android:id="@+id/navigation_paging_example"
+        android:name="ru.stan.a65.presentation.ui.fragmentPaging.PagingFragment"
+        android:label="PagingFragment"
+        tools:layout="@layout/fragment_paging" />
 
 </navigation>

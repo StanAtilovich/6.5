@@ -1,4 +1,4 @@
-package ru.stan.a65.presentation.ui.FragmentWorkManager
+package ru.stan.a65.presentation.ui.fragmentWorkManager
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
