@@ -55,8 +55,6 @@ class CashingDataWorker(
         fun stop() = workManager.cancelUniqueWork(WORK_NAME)
 
         private const val WORK_NAME = "Cashing data into room db work"
-
-
     }
 
 }
