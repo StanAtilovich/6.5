@@ -2,21 +2,15 @@ package ru.stan.a65.presentation.ui.fragmentCharacterList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import ru.stan.a65.App
-import ru.stan.a65.data.repository.CharacterRepositoryImpl
-import ru.stan.a65.domain.usecase.GetCharacterListUseCase
 
 
-class ListViewModelFactory : ViewModelProvider.Factory {
+class ListViewModelFactory(
+    private val listCharactersViewModel: ListCharactersViewModel
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ListCharactersViewModel::class.java)) {
-
-            val repo = CharacterRepositoryImpl(App.INSTANCE)
-            val getCharacterListUseCase = GetCharacterListUseCase(repo)
-            return ListCharactersViewModel(
-                getCharacterListUseCase
-            ) as T
+            return listCharactersViewModel as T
         }
-        throw RuntimeException("неизвестный класс 2")
+        throw RuntimeException("неизвестный класс")
     }
 }

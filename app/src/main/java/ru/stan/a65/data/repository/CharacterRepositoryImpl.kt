@@ -8,14 +8,17 @@ import ru.stan.a65.domain.model.CharacterItem
 import ru.stan.a65.domain.repository.CharacterRepository
 
 class CharacterRepositoryImpl(
-    application: Application
+    application: Application,
+    private val mapper: CharacterMapper
 ): CharacterRepository {
-    private val mapper = CharacterMapper()
     private val characterDao = CharacterDatabase.getInstance(application).characterDao()
 
 
     //это у нас Network
     override suspend fun getCharactersFromNetwork(): List<CharacterItem> {
+
+
+
         return mapper.mapListDtoToListModel(
             RetrofitInstance.searchCharacterApi.getCharacters())
     }
@@ -51,7 +54,5 @@ class CharacterRepositoryImpl(
     override suspend fun getCharacterByIdFromDb(id: Int): CharacterItem {
         return mapper.mapDbModelToModel(characterDao.getAllCharacterById(id))
     }
-
 }
-
 

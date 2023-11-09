@@ -8,16 +8,25 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
+import ru.stan.a65.App
 import ru.stan.a65.databinding.FragmentListCharactersBinding
+import ru.stan.a65.di.DaggerApplicationComponent
+import ru.stan.a65.di.DomainModule
+import ru.stan.a65.di.PresentationModule
 
 
 class ListCharacters : Fragment() {
-    private var _binding: FragmentListCharactersBinding? = null
-    private val binding get() = _binding!!
+
     private val viewModel: ListCharactersViewModel by viewModels {
-        ListViewModelFactory()
+DaggerApplicationComponent.builder()
+    .domainModule(DomainModule(App.INSTANCE))
+    .presentationModule(PresentationModule(App.INSTANCE))
+    .build()
+    .listViewModelFactory()
     }
 
+    private var _binding: FragmentListCharactersBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -63,7 +72,4 @@ class ListCharacters : Fragment() {
         _binding = null
     }
 
-    companion object {
-        fun newInstance() = ListCharacters()
-    }
 }
