@@ -1,4 +1,4 @@
-package ru.stan.a65.data.paging
+package ru.stan.a65.data.paging.pagingSource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -13,7 +13,6 @@ class CharacterPagingSource : PagingSource<Int, CharacterPagingItem>() {
     private val mapper = CharacterPagingMapper()
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CharacterPagingItem> {
         val page = params.key ?: STARTING_KEY
-        val range = (page..LAST_PAGE)
 
        return kotlin.runCatching {
             mapper.mapDtoPagingToItemPaging(api.searchCharactersApi.getCharacters(page).data)
@@ -30,10 +29,8 @@ class CharacterPagingSource : PagingSource<Int, CharacterPagingItem>() {
 
     }
 
-    override fun getRefreshKey(state: PagingState<Int, CharacterPagingItem>): Int? {
-        val anchorPosition = state.anchorPosition ?: return null
-        val character = state.closestItemToPosition(anchorPosition) ?: return null
-        return ensureValueKey(character.id.toInt() - state.config.pageSize / 2)
+    override fun getRefreshKey(state: PagingState<Int, CharacterPagingItem>): Int {
+        return STARTING_KEY
     }
 
     private fun ensureValueKey(key: Int) = min(max(STARTING_KEY, key), LAST_PAGE)

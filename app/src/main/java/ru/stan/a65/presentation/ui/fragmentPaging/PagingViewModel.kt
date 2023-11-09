@@ -7,7 +7,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import kotlinx.coroutines.flow.Flow
-import ru.stan.a65.data.CharacterPagingRepository
+import ru.stan.a65.data.repository.CharacterPagingRepository
 import ru.stan.a65.domain.model.CharacterPagingItem
 
 class PagingViewModel : ViewModel() {
@@ -24,7 +24,7 @@ class PagingViewModel : ViewModel() {
 
 
     companion object {
-        private const val ITEM_PER_PAGE = 50
+        private const val ITEM_PER_PAGE = 100
     }
 
 }

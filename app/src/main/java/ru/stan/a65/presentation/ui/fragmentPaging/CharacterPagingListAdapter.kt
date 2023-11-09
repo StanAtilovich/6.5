@@ -6,6 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import ru.stan.a65.R
 import ru.stan.a65.databinding.CharacterItemBinding
 import ru.stan.a65.domain.model.CharacterPagingItem
 
@@ -28,16 +29,23 @@ class CharacterPagingListAdapter
         holder: CharacterListViewHolder, position: Int
     ) {
         val characterItem = getItem(position)
-        characterItem?.imageUrl?.let {
-            holder.binding.imageCharacter.load(it)
-        }
-        holder.binding.tvName.text = characterItem?.name ?: "Имя неизвестна"
-        holder.binding.tvHouse.text = characterItem?.hogwartsHouse ?: "Нет данных о факультете"
+        characterItem?.let { holder.bind(it) }
     }
 
     inner class CharacterListViewHolder(
         val binding: CharacterItemBinding
-    ) : RecyclerView.ViewHolder(binding.root)
+    ) : RecyclerView.ViewHolder(binding.root){
+        fun bind(characterPagingItem: CharacterPagingItem){
+            if (characterPagingItem.imageUrl != null){
+                binding.imageCharacter.load(characterPagingItem.imageUrl)
+            }else{
+                binding.imageCharacter.load(R.drawable.empty_face)
+            }
+
+            binding.tvName.text = characterPagingItem.name ?: "Имя неизвестна"
+            binding.tvHouse.text =characterPagingItem.hogwartsHouse ?: "Нет данных о факультете"
+        }
+    }
 
     companion object {
         val callback = object : DiffUtil.ItemCallback<CharacterPagingItem>() {
