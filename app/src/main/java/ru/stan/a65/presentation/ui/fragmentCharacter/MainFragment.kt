@@ -10,12 +10,18 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import coil.load
 import kotlinx.coroutines.launch
+import ru.stan.a65.App
 import ru.stan.a65.databinding.FragmentMainBinding
+import ru.stan.a65.di.ContextModule
+import ru.stan.a65.di.DaggerApplicationComponent
 
 
 class MainFragment : Fragment() {
     private val viewModel: MainViewModel by viewModels {
-        MainViewModelFactory()
+        DaggerApplicationComponent.builder()
+            .contextModule(ContextModule(App.INSTANCE))
+            .build()
+            .mainViewModelFactory()
     }
 
     private var _binding: FragmentMainBinding? = null
@@ -54,7 +60,4 @@ class MainFragment : Fragment() {
         _binding = null
     }
 
-    companion object {
-        fun newInstance() = MainFragment()
-    }
 }

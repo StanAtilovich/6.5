@@ -5,14 +5,31 @@ import dagger.Module
 import dagger.Provides
 import ru.stan.a65.data.mapper.CharacterMapper
 import ru.stan.a65.data.repository.CharacterRepositoryImpl
+import ru.stan.a65.domain.repository.CharacterRepository
+import ru.stan.a65.domain.usecase.GetCharacterListUseCase
+import ru.stan.a65.domain.usecase.GetCharacterUseCase
 
 
 @Module
 class DomainModule {
 
-
     @Provides
     fun provideCharacterRepositoryImpl(application: Application,characterMapper: CharacterMapper): CharacterRepositoryImpl {
         return CharacterRepositoryImpl(application, characterMapper)
     }
+
+    @Provides
+    fun provideGetCharacterListUseCase(
+        characterRepository: CharacterRepository
+    ): GetCharacterListUseCase {
+        return GetCharacterListUseCase(characterRepository)
+    }
+
+    @Provides
+    fun provideGetCharacterUseCase(
+        characterRepository: CharacterRepository
+    ): GetCharacterUseCase {
+        return GetCharacterUseCase(characterRepository)
+    }
+
 }
