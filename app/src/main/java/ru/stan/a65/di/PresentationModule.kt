@@ -1,5 +1,6 @@
 package ru.stan.a65.di
 
+import android.app.Application
 import dagger.Module
 import dagger.Provides
 import ru.stan.a65.data.repository.CharacterRepositoryImpl
@@ -8,7 +9,7 @@ import ru.stan.a65.presentation.ui.fragmentCharacterList.ListCharactersViewModel
 import ru.stan.a65.presentation.ui.fragmentCharacterList.ListViewModelFactory
 
 @Module
-class PresentationModule {
+class PresentationModule(application: Application) {
 
     @Provides
     fun provideGetCharacterListUseCase(
