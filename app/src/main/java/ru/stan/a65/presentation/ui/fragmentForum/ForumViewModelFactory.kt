@@ -1,4 +1,4 @@
-package ru.stan.a65.presentation.ui.FragmentForum
+package ru.stan.a65.presentation.ui.fragmentForum
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

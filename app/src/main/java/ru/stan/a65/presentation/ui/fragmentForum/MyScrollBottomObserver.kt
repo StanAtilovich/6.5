@@ -1,8 +1,7 @@
-package ru.stan.a65.presentation.ui.FragmentForum
+package ru.stan.a65.presentation.ui.fragmentForum
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ru.stan.a65.presentation.ui.FragmentForum.ForumAdapter
 
 class MyScrollBottomObserver(
     private val manager: LinearLayoutManager,
