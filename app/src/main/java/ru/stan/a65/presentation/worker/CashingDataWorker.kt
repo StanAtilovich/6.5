@@ -9,6 +9,7 @@ import androidx.work.WorkerParameters
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import ru.stan.a65.App
+import ru.stan.a65.data.local.database.CharacterDatabase
 import ru.stan.a65.data.mapper.CharacterMapper
 import ru.stan.a65.data.repository.CharacterRepositoryImpl
 import ru.stan.a65.domain.usecase.CashCharacterListUseCase
@@ -18,7 +19,7 @@ class CashingDataWorker(
     context: Context,
     params: WorkerParameters
 ) : CoroutineWorker(context, params) {
-    val repo = CharacterRepositoryImpl(App.INSTANCE, CharacterMapper())
+    val repo = CharacterRepositoryImpl(App.INSTANCE, CharacterMapper(),CharacterDatabase.getInstance(App.INSTANCE).characterDao())
     val uploadDataUseCase = UploadListUseCase(repo)
     val cashDataUseCase = CashCharacterListUseCase(repo)
 
