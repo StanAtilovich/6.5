@@ -1,5 +1,6 @@
 package ru.stan.a65.presentation.ui.Activities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         App.INSTANCE.permissionService.initMainActivityContext(this)
         App.INSTANCE.permissionService.checkPermissions()
 
-        initAuth()
+        //   initAuth()
 
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragment_container) as NavHostFragment
@@ -52,22 +53,28 @@ class MainActivity : AppCompatActivity() {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             return@setNavigationItemSelectedListener true
         }
-        //   MessagingUtils().logToken()
 
     }
 
-
-    private fun initAuth() {
-        App.INSTANCE.firebaseInstance.initAuthUtils(this)
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
+    private fun isDoneAuth(): Boolean =
+        App.INSTANCE.firebaseInstance.authUtils.auth.currentUser != null
 
     private fun singUpIn() {
-        App.INSTANCE.firebaseInstance.authUtils.singUpIn()
+        if (!isDoneAuth()) {
+            val intent = Intent(this, SingInActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
-    private fun singOut() {
-        App.INSTANCE.firebaseInstance.authUtils.singOut()
+    private fun singOut(){
+        App.INSTANCE.firebaseInstance.authUtils.authUi
+            .signOut(this)
     }
-
 
 }
+

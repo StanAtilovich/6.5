@@ -15,9 +15,9 @@ import java.util.Date
 import java.util.Locale
 import kotlin.random.Random
 
-class MessagingUtils {
-
-    private val msgInstance = FirebaseMessaging.getInstance()
+class MessagingUtils(
+    private val msgInstance: FirebaseMessaging
+) {
     fun logToken(tag: String = "FCM token") {
         msgInstance.token.addOnCompleteListener { task ->
             if (task.isSuccessful) {
@@ -31,6 +31,7 @@ class MessagingUtils {
     inner class MyFirebaseMessagingService : FirebaseMessagingService() {
         override fun onMessageReceived(message: RemoteMessage) {
             super.onMessageReceived(message)
+
             val notification = NotificationCompat.Builder(this, "FCM_chanel")
                 .setSmallIcon(R.drawable.harry)
                 .setContentTitle(message.data["message"])

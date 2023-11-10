@@ -6,16 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.launch
+import ru.stan.a65.App
 import ru.stan.a65.databinding.FragmentWorkManagerBinding
+import ru.stan.a65.di.ContextModule
+import ru.stan.a65.di.DaggerApplicationComponent
 
 
 class WorkManagerFragment : Fragment() {
 
 
     private val viewModel: WorkManagerViewModel by viewModels {
-        WorkManagerViewModelFactory()
+        DaggerApplicationComponent.builder()
+            .contextModule(ContextModule(App.INSTANCE))
+            .build()
+            .workManagerViewModelModelFactory()
+
     }
 
     private var _binding: FragmentWorkManagerBinding? = null
@@ -33,9 +38,9 @@ class WorkManagerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.btnAdd.setOnClickListener { viewModel.onBtnAdd() }
-        binding.btnUpdate.setOnClickListener { viewModel.onUpdateBtn() }
-        binding.btnDelete.setOnClickListener { viewModel.onDeleteBtn() }
+      //  binding.btnAdd.setOnClickListener { viewModel.onBtnAdd() }
+      //  binding.btnUpdate.setOnClickListener { viewModel.onUpdateBtn() }
+      //  binding.btnDelete.setOnClickListener { viewModel.onDeleteBtn() }
         //  binding.btnNotify.setOnClickListener {
         //      viewModel.testNotify()
         //  }
@@ -48,11 +53,11 @@ class WorkManagerFragment : Fragment() {
 
 
 
-        lifecycleScope.launch {
-            viewModel.characters.collect {
-                binding.textView.text = it.joinToString(separator = "\r\n")
-            }
-        }
+     //   lifecycleScope.launch {
+     //       viewModel.characters.collect {
+     //           binding.textView.text = it.joinToString(separator = "\r\n")
+     //       }
+     //   }
     }
 
     override fun onDestroyView() {

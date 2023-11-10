@@ -1,20 +1,17 @@
 package ru.stan.a65.data.firebase
 
-import android.app.Application
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.firebase.crashlytics.ktx.crashlytics
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.google.firebase.database.FirebaseDatabase
 import ru.stan.a65.domain.model.ForumItem
-import ru.stan.a65.presentation.ui.Activities.MainActivity
 
-class FirebaseUtils() {
-    lateinit var authUtils: AuthUtils
-    val dbFirebase = Firebase.database
+class FirebaseUtils(
+    private val dbFirebase: FirebaseDatabase,
+    internal val crashlytics: FirebaseCrashlytics,
+    internal val authUtils: AuthUtils
+) {
     val forumReference = dbFirebase.getReference(FORUM_CHILD)
 
-
-    val crashlytics = Firebase.crashlytics
 
     fun getFirebaseRecyclerOptions() =
         FirebaseRecyclerOptions.Builder<ForumItem>()
@@ -22,16 +19,14 @@ class FirebaseUtils() {
             .build()
 
 
-    fun initAuthUtils(mainActivity: MainActivity) {
-        authUtils = AuthUtils(mainActivity)
-    }
-
     companion object {
 
         private const val FORUM_CHILD = "Forum"
         private var INSTANCE: FirebaseUtils? = null
         private val LOCK = Any()
-        fun getInstance(application: Application): FirebaseUtils {
+        fun getInstance(
+            firebaseUtils: FirebaseUtils
+        ): FirebaseUtils {
             INSTANCE?.let { firebaseInstance ->
                 return firebaseInstance
             }
@@ -40,8 +35,16 @@ class FirebaseUtils() {
                 INSTANCE?.let { firebaseInstance ->
                     return firebaseInstance
                 }
-                INSTANCE = FirebaseUtils()
-                return FirebaseUtils()
+                INSTANCE = FirebaseUtils(
+                    firebaseUtils.dbFirebase,
+                    firebaseUtils.crashlytics,
+                    firebaseUtils.authUtils
+                )
+                return FirebaseUtils(
+                    firebaseUtils.dbFirebase,
+                    firebaseUtils.crashlytics,
+                    firebaseUtils.authUtils
+                )
             }
         }
 

@@ -19,7 +19,7 @@ class CashingDataWorker(
     context: Context,
     params: WorkerParameters
 ) : CoroutineWorker(context, params) {
-    val repo = CharacterRepositoryImpl(App.INSTANCE, CharacterMapper(),CharacterDatabase.getInstance(App.INSTANCE).characterDao())
+    val repo = CharacterRepositoryImpl(CharacterMapper(),CharacterDatabase.getInstance(App.INSTANCE).characterDao())
     val uploadDataUseCase = UploadListUseCase(repo)
     val cashDataUseCase = CashCharacterListUseCase(repo)
 
@@ -55,8 +55,6 @@ class CashingDataWorker(
         fun stop() = workManager.cancelUniqueWork(WORK_NAME)
 
         private const val WORK_NAME = "Cashing data into room db work"
-
-
     }
 
 }
