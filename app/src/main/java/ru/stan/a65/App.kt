@@ -41,7 +41,7 @@ class App : Application() {
 
         //сдесь включаем NotificationUtils
         notificationService = NotificationUtils.getInstance(this)
-        notificationService.createNotificationChanel()
+        notificationService.createNotificationChannel()
         permissionService = PermissionUtils.getInstance(this)
 
     }

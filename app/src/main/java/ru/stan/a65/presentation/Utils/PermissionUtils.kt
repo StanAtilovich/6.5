@@ -29,8 +29,8 @@ class PermissionUtils(
         }
     }
 
-    fun isPostNotNotificationsGranted(): Boolean? {
-        return  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+    fun isPostNotificationsGranted(): Boolean? {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             ActivityCompat.checkSelfPermission(
                 mainActivity,
                 Manifest.permission.POST_NOTIFICATIONS

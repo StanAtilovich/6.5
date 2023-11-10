@@ -9,8 +9,11 @@
         tools:context=".presentation.ui.fragmentWorkManager.WorkManagerFragment">
 
         <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="-16dp"
+            tools:layout_editor_absoluteY="0dp">
 
             <TextView
                 android:id="@+id/textView"
@@ -68,6 +71,18 @@
             app:layout_constraintBottom_toTopOf="@+id/btnNotify"
             app:layout_constraintEnd_toEndOf="@+id/btnNotify"
             app:layout_constraintStart_toStartOf="@+id/btnNotify" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:progress="0"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/btnAdd"
+            app:layout_constraintEnd_toStartOf="@+id/btnNotify"
+            app:layout_constraintStart_toStartOf="@+id/scrollView2"
+            app:layout_constraintTop_toTopOf="@+id/scrollView2" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
