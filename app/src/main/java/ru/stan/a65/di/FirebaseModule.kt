@@ -22,9 +22,7 @@ import ru.stan.a65.presentation.ui.fragmentForum.ForumViewModel
 import ru.stan.a65.presentation.ui.fragmentForum.ForumViewModelFactory
 
 @Module
-class FirebaseModule(
-    private val mainActivity: MainActivity
-) {
+class FirebaseModule {
     @Provides
     fun provideFirebaseDb(): FirebaseDatabase {
         return Firebase.database
@@ -46,9 +44,11 @@ class FirebaseModule(
     }
 
     @Provides
-    fun provideAuthUtils(firebaseAuth: FirebaseAuth, authUI: AuthUI): AuthUtils {
+    fun provideAuthUtils(
+        firebaseAuth: FirebaseAuth,
+        authUI: AuthUI
+    ): AuthUtils {
         return AuthUtils(
-            mainActivity,
             firebaseAuth,
             authUI
         )
@@ -68,11 +68,6 @@ class FirebaseModule(
     }
 
     @Provides
-    fun provideFirebaseMessaging(): FirebaseMessaging {
-        return FirebaseMessaging.getInstance()
-    }
-
-    @Provides
     fun provideForumRepositoryImpl(
         application: Application,
         firebaseUtils: FirebaseUtils
@@ -81,17 +76,23 @@ class FirebaseModule(
     }
 
     @Provides
-    fun provideSendMessageUseCase(forumRepository: ForumRepository): SendMessageUseCase {
+    fun provideSendMessageUseCase(
+        forumRepository: ForumRepository
+    ): SendMessageUseCase {
         return SendMessageUseCase(forumRepository)
     }
 
     @Provides
-    fun provideForumViewModel(sendMessageUseCase: SendMessageUseCase): ForumViewModel {
+    fun provideForumViewModel(
+        sendMessageUseCase: SendMessageUseCase
+    ): ForumViewModel {
         return ForumViewModel(sendMessageUseCase)
     }
 
     @Provides
-    fun provideForumModelFactory(forumViewModel: ForumViewModel): ForumViewModelFactory {
-       return ForumViewModelFactory(forumViewModel)
+    fun provideForumModelFactory(
+        forumViewModel: ForumViewModel
+    ): ForumViewModelFactory {
+        return ForumViewModelFactory(forumViewModel)
     }
 }

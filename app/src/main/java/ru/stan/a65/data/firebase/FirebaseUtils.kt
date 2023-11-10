@@ -8,7 +8,7 @@ import ru.stan.a65.domain.model.ForumItem
 
 class FirebaseUtils(
     private val dbFirebase: FirebaseDatabase,
-    private val crashlytics: FirebaseCrashlytics,
+    internal val crashlytics: FirebaseCrashlytics,
     val authUtils: AuthUtils
 ) {
     val forumReference = dbFirebase.getReference(FORUM_CHILD)
@@ -19,10 +19,6 @@ class FirebaseUtils(
             .setQuery(forumReference, ForumItem::class.java)
             .build()
 
-
-    //  fun initAuthUtils(mainActivity: MainActivity) {
-    //      authUtils = AuthUtils(mainActivity)
-    //  }
 
     companion object {
 

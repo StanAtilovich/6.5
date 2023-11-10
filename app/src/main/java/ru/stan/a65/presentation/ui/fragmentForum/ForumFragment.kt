@@ -15,12 +15,18 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import ru.stan.a65.App
 import ru.stan.a65.databinding.FragmentForumBinding
+import ru.stan.a65.di.ContextModule
+import ru.stan.a65.di.DaggerApplicationComponent
 import ru.stan.a65.presentation.ui.Activities.MainActivity
 
 class ForumFragment : Fragment() {
     private val viewModel: ForumViewModel by viewModels{
-        ForumViewModelFactory(forumViewModel)
+        DaggerApplicationComponent.builder()
+            .contextModule(ContextModule(App.INSTANCE))
+            .build()
+            .forumViewModelModelFactory()
     }
     private var _binding: FragmentForumBinding? = null
 

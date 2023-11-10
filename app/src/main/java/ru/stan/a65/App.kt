@@ -4,6 +4,8 @@ import android.app.Application
 import com.google.firebase.database.FirebaseDatabase
 import ru.stan.a65.data.firebase.FirebaseUtils
 import ru.stan.a65.data.local.database.CharacterDatabase
+import ru.stan.a65.di.ContextModule
+import ru.stan.a65.di.DaggerApplicationComponent
 import ru.stan.a65.presentation.Utils.NotificationUtils
 import ru.stan.a65.presentation.Utils.PermissionUtils
 
@@ -29,7 +31,11 @@ class App : Application() {
         //db
         db = CharacterDatabase.getInstance(INSTANCE)
 
-        firebaseInstance = FirebaseUtils.getInstance(this)
+        firebaseInstance =
+            DaggerApplicationComponent.builder()
+                .contextModule(ContextModule(this))
+                .build()
+                .firebaseUtils()
 
         //выключаем крашлитиксы
         firebaseInstance.crashlytics.setCrashlyticsCollectionEnabled(false)
@@ -37,7 +43,7 @@ class App : Application() {
         //сдесь включаем NotificationUtils
         notificationService = NotificationUtils.getInstance(this)
         notificationService.createNotificationChanel()
-        permissionService= PermissionUtils.getInstance(this)
+        permissionService = PermissionUtils.getInstance(this)
 
     }
 
