@@ -75,5 +75,6 @@ class MainActivity : AppCompatActivity() {
         App.INSTANCE.firebaseInstance.authUtils.authUi
             .signOut(this)
     }
+
 }
 
