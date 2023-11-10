@@ -21,14 +21,11 @@ import ru.stan.a65.domain.usecase.UploadListUseCase
 
 class CashingDataWorker(
     context: Context,
-    params: WorkerParameters
+    params: WorkerParameters,
+   private val uploadDataUseCase : UploadListUseCase,
+   private val cashDataUseCase : CashCharacterListUseCase
 ) : CoroutineWorker(context, params) {
-    val repo = CharacterRepositoryImpl(
-        CharacterMapper(),
-        CharacterDatabase.getInstance(App.INSTANCE).characterDao()
-    )
-    val uploadDataUseCase = UploadListUseCase(repo)
-    val cashDataUseCase = CashCharacterListUseCase(repo)
+
 
     override suspend fun doWork(): Result {
         makeNotification("Start")

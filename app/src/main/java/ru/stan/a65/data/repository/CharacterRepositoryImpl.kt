@@ -1,5 +1,6 @@
 package ru.stan.a65.data.repository
 
+import android.app.Application
 import ru.stan.a65.data.local.dao.CharacterDao
 import ru.stan.a65.data.mapper.CharacterMapper
 import ru.stan.a65.data.network.RetrofitInstance
@@ -7,6 +8,7 @@ import ru.stan.a65.domain.model.CharacterItem
 import ru.stan.a65.domain.repository.CharacterRepository
 
 class CharacterRepositoryImpl(
+    application: Application,
     private val mapper: CharacterMapper,
     private val characterDao: CharacterDao
 ): CharacterRepository {
