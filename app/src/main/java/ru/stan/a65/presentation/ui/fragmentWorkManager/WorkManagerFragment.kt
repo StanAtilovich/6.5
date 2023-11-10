@@ -43,6 +43,7 @@ class WorkManagerFragment : Fragment() {
         binding.btnNotify.setOnClickListener {
             viewModel.startService()
         }
+
         binding.btnStop.setOnClickListener {
             viewModel.stopService()
         }
