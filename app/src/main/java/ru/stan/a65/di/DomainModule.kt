@@ -1,6 +1,5 @@
 package ru.stan.a65.di
 
-import android.app.Application
 import dagger.Module
 import dagger.Provides
 import ru.stan.a65.data.local.dao.CharacterDao
@@ -15,8 +14,8 @@ import ru.stan.a65.domain.usecase.GetCharacterUseCase
 class DomainModule {
 
     @Provides
-    fun provideCharacterRepositoryImpl(application: Application,characterMapper: CharacterMapper,characterDao: CharacterDao): CharacterRepositoryImpl {
-        return CharacterRepositoryImpl(application, characterMapper,characterDao)
+    fun provideCharacterRepositoryImpl(characterMapper: CharacterMapper,characterDao: CharacterDao): CharacterRepositoryImpl {
+        return CharacterRepositoryImpl( characterMapper,characterDao)
     }
 
     @Provides

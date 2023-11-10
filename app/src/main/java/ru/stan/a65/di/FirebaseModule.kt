@@ -1,6 +1,5 @@
 package ru.stan.a65.di
 
-import android.app.Application
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -9,7 +8,6 @@ import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.messaging.FirebaseMessaging
 import dagger.Module
 import dagger.Provides
 import ru.stan.a65.data.firebase.AuthUtils
@@ -17,7 +15,6 @@ import ru.stan.a65.data.firebase.FirebaseUtils
 import ru.stan.a65.data.repository.ForumRepositoryImpl
 import ru.stan.a65.domain.repository.ForumRepository
 import ru.stan.a65.domain.usecase.SendMessageUseCase
-import ru.stan.a65.presentation.ui.Activities.MainActivity
 import ru.stan.a65.presentation.ui.fragmentForum.ForumViewModel
 import ru.stan.a65.presentation.ui.fragmentForum.ForumViewModelFactory
 
@@ -69,10 +66,9 @@ class FirebaseModule {
 
     @Provides
     fun provideForumRepositoryImpl(
-        application: Application,
         firebaseUtils: FirebaseUtils
     ): ForumRepositoryImpl {
-        return ForumRepositoryImpl(application, firebaseUtils)
+        return ForumRepositoryImpl( firebaseUtils)
     }
 
     @Provides

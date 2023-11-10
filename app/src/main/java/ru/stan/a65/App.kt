@@ -1,7 +1,6 @@
 package ru.stan.a65
 
 import android.app.Application
-import com.google.firebase.database.FirebaseDatabase
 import ru.stan.a65.data.firebase.FirebaseUtils
 import ru.stan.a65.data.local.database.CharacterDatabase
 import ru.stan.a65.di.ContextModule
