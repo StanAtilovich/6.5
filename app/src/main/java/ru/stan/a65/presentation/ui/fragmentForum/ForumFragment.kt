@@ -20,7 +20,7 @@ import ru.stan.a65.presentation.ui.Activities.MainActivity
 
 class ForumFragment : Fragment() {
     private val viewModel: ForumViewModel by viewModels{
-        ForumViewModelFactory()
+        ForumViewModelFactory(forumViewModel)
     }
     private var _binding: FragmentForumBinding? = null
 

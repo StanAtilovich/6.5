@@ -2,20 +2,16 @@ package ru.stan.a65.data.firebase
 
 import android.content.Intent
 import com.firebase.ui.auth.AuthUI
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import ru.stan.a65.R
 import ru.stan.a65.presentation.ui.Activities.MainActivity
 import ru.stan.a65.presentation.ui.Activities.SingInActivity
 
 class AuthUtils(
-    private val mainActivity : MainActivity
+    private val mainActivity : MainActivity,
+    private val auth : FirebaseAuth,
+    private val authUi : AuthUI
 ) {
-
-    private val auth = Firebase.auth
-    private val authUi = AuthUI.getInstance()
-
-
     private fun isDoneAuth(): Boolean =
         auth.currentUser != null
 
