@@ -1,6 +1,5 @@
 package ru.stan.a65.data.firebase
 
-import android.app.Application
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.google.firebase.database.FirebaseDatabase
@@ -26,7 +25,6 @@ class FirebaseUtils(
         private var INSTANCE: FirebaseUtils? = null
         private val LOCK = Any()
         fun getInstance(
-            application: Application,
             firebaseUtils: FirebaseUtils
         ): FirebaseUtils {
             INSTANCE?.let { firebaseInstance ->
