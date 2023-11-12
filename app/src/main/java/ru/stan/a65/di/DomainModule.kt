@@ -7,16 +7,21 @@ import ru.stan.a65.data.local.dao.CharacterDao
 import ru.stan.a65.data.mapper.CharacterMapper
 import ru.stan.a65.data.repository.CharacterRepositoryImpl
 import ru.stan.a65.domain.repository.CharacterRepository
+import ru.stan.a65.domain.usecase.CashCharacterListUseCase
 import ru.stan.a65.domain.usecase.GetCharacterListUseCase
 import ru.stan.a65.domain.usecase.GetCharacterUseCase
+import ru.stan.a65.domain.usecase.UploadListUseCase
 
 
 @Module
 class DomainModule {
 
     @Provides
-    fun provideCharacterRepositoryImpl(characterMapper: CharacterMapper,characterDao: CharacterDao): CharacterRepositoryImpl {
-        return CharacterRepositoryImpl( application = Application(),characterMapper,characterDao)
+    fun provideCharacterRepositoryImpl(
+        characterMapper: CharacterMapper,
+        characterDao: CharacterDao
+    ): CharacterRepositoryImpl {
+        return CharacterRepositoryImpl(application = Application(), characterMapper, characterDao)
     }
 
     @Provides
@@ -31,6 +36,20 @@ class DomainModule {
         characterRepository: CharacterRepository
     ): GetCharacterUseCase {
         return GetCharacterUseCase(characterRepository)
+    }
+
+    @Provides
+    fun provideUploadListUseCase(
+        characterRepository: CharacterRepository
+    ): UploadListUseCase {
+        return UploadListUseCase(characterRepository)
+    }
+
+    @Provides
+    fun provideCashCharacterListUseCase(
+        characterRepository: CharacterRepository
+    ): CashCharacterListUseCase {
+        return CashCharacterListUseCase(characterRepository)
     }
 
 }

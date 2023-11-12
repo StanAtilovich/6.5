@@ -1,13 +1,11 @@
-package ru.stan.a65.presentation.ui.fragmentWorkManager
+package ru.stan.a65.presentation.worker
 
 import android.content.Context
 import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
-import ru.stan.a65.data.repository.CharacterRepositoryImpl
 import ru.stan.a65.domain.usecase.CashCharacterListUseCase
 import ru.stan.a65.domain.usecase.UploadListUseCase
-import ru.stan.a65.presentation.worker.CashingDataWorker
 
 class CasherDataWorkerFactory(
     private val uploadDataUseCase: UploadListUseCase,
@@ -17,7 +15,7 @@ class CasherDataWorkerFactory(
         appContext: Context,
         workerClassName: String,
         workerParameters: WorkerParameters
-    ): ListenableWorker? {
+    ): ListenableWorker {
 
         return CashingDataWorker(
             appContext,
