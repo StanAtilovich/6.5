@@ -5,11 +5,15 @@ import dagger.Module
 import dagger.Provides
 import ru.stan.a65.data.local.dao.CharacterDao
 import ru.stan.a65.data.mapper.CharacterMapper
+import ru.stan.a65.data.paging.pagingSource.CharacterPagingSource
+import ru.stan.a65.data.paging.repoImpl.CharacterPagingRepositoryImpl
 import ru.stan.a65.data.repository.CharacterRepositoryImpl
+import ru.stan.a65.domain.repository.CharacterPagingRepository
 import ru.stan.a65.domain.repository.CharacterRepository
 import ru.stan.a65.domain.usecase.CashCharacterListUseCase
 import ru.stan.a65.domain.usecase.GetCharacterListUseCase
 import ru.stan.a65.domain.usecase.GetCharacterUseCase
+import ru.stan.a65.domain.usecase.GetPagerForCharactersUseCase
 import ru.stan.a65.domain.usecase.UploadListUseCase
 
 
@@ -50,6 +54,13 @@ class DomainModule {
         characterRepository: CharacterRepository
     ): CashCharacterListUseCase {
         return CashCharacterListUseCase(characterRepository)
+    }
+
+    @Provides
+    fun provideGetPagerForCharactersUseCase(
+        characterPagingRepository: CharacterPagingRepository
+    ): GetPagerForCharactersUseCase{
+        return GetPagerForCharactersUseCase(characterPagingRepository)
     }
 
 }

@@ -18,10 +18,7 @@ import ru.stan.a65.di.DaggerApplicationComponent
 
 class MainFragment : Fragment() {
     private val viewModel: MainViewModel by viewModels {
-        DaggerApplicationComponent.builder()
-            .contextModule(ContextModule(App.INSTANCE))
-            .build()
-            .mainViewModelFactory()
+        App.INSTANCE.appComponent.mainViewModelFactory()
     }
 
     private var _binding: FragmentMainBinding? = null

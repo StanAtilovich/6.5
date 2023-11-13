@@ -19,10 +19,7 @@ class WorkManagerFragment : Fragment() {
 
 
     private val viewModel: WorkManagerViewModel by viewModels {
-        DaggerApplicationComponent.builder()
-            .contextModule(ContextModule(App.INSTANCE))
-            .build()
-            .workManagerViewModelModelFactory()
+        App.INSTANCE.appComponent.workManagerViewModelModelFactory()
 
     }
 

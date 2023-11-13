@@ -6,11 +6,13 @@ import ru.stan.a65.data.paging.pagingSource.CharacterPagingSource
 import ru.stan.a65.domain.repository.CharacterPagingRepository
 
 
-class CharacterPagingRepositoryImpl : CharacterPagingRepository {
+class CharacterPagingRepositoryImpl(
+    private val pagingSource: CharacterPagingSource
+) : CharacterPagingRepository {
 
     override fun getPager() = Pager(
         config = PagingConfig(ITEM_PER_PAGE, enablePlaceholders = false),
-        pagingSourceFactory = { CharacterPagingSource() }
+        pagingSourceFactory = { pagingSource }
     )
     companion object{
         private const val ITEM_PER_PAGE = 100

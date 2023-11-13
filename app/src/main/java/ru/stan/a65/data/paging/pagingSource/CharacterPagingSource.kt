@@ -8,14 +8,18 @@ import ru.stan.a65.domain.model.CharacterPagingItem
 import kotlin.math.max
 import kotlin.math.min
 
-class CharacterPagingSource : PagingSource<Int, CharacterPagingItem>() {
-    private val api = RetrofitInstance
-    private val mapper = CharacterPagingMapper()
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CharacterPagingItem> {
+class CharacterPagingSource(
+    private val mapper : CharacterPagingMapper
+) : PagingSource<Int, CharacterPagingItem>() {
+
+    override suspend fun load(
+        params: LoadParams<Int>
+    ): LoadResult<Int, CharacterPagingItem> {
         val page = params.key ?: STARTING_KEY
 
        return kotlin.runCatching {
-            mapper.mapDtoPagingToItemPaging(api.searchCharactersApi.getCharacters(page).data)
+            mapper.mapDtoPagingToItemPaging(
+                RetrofitInstance.searchCharactersApi.getCharacters(page).data)
         }.fold(
             onSuccess = {
                 LoadResult.Page(

@@ -33,7 +33,7 @@ class MessagingUtils(
             super.onMessageReceived(message)
 
             val notification = NotificationCompat.Builder(this, "FCM_chanel")
-                .setSmallIcon(R.drawable.harry)
+                .setSmallIcon(R.drawable.harry1)
                 .setContentTitle(message.data["message"])
                 .setContentText(message.data["message"] + convertToDate(message.data["timestamp"]))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)

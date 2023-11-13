@@ -10,17 +10,12 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import ru.stan.a65.App
 import ru.stan.a65.databinding.FragmentListCharactersBinding
-import ru.stan.a65.di.ContextModule
-import ru.stan.a65.di.DaggerApplicationComponent
 
 
 class ListCharacters : Fragment() {
 
     private val viewModel: ListCharactersViewModel by viewModels {
-        DaggerApplicationComponent.builder()
-            .contextModule(ContextModule(App.INSTANCE))
-            .build()
-            .listViewModelFactory()
+        App.INSTANCE.appComponent.listViewModelFactory()
     }
 
     private var _binding: FragmentListCharactersBinding? = null

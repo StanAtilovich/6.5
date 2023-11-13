@@ -14,11 +14,13 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import ru.stan.a65.App
 import ru.stan.a65.databinding.FragmentPagingBinding
 
 class PagingFragment : Fragment() {
-    private val viewModel: PagingViewModel by viewModels()
-
+    private val viewModel: PagingViewModel by viewModels{
+        App.INSTANCE.appComponent.pagingViewModelModelFactory()
+    }
     private var _binding: FragmentPagingBinding? = null
     private val binding get() = _binding!!
 

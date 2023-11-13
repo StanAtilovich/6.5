@@ -9,8 +9,10 @@ import ru.stan.a65.data.paging.repoImpl.CharacterPagingRepositoryImpl
 import ru.stan.a65.domain.model.CharacterPagingItem
 import ru.stan.a65.domain.usecase.GetPagerForCharactersUseCase
 
-class PagingViewModel : ViewModel() {
-    val useCase = GetPagerForCharactersUseCase(CharacterPagingRepositoryImpl())
+class PagingViewModel(
+    private val useCase : GetPagerForCharactersUseCase
+) : ViewModel() {
+
     val items: Flow<PagingData<CharacterPagingItem>> = useCase()
         .flow
         .cachedIn(viewModelScope)

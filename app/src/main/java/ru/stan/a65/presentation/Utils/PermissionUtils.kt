@@ -46,7 +46,9 @@ class PermissionUtils(
         ) { map ->
             val msq = if (map.values.all { it }) {
                 " Permission is granted"
-            } else "Permission is not granted"
+            } else {
+                "Permission is not granted"
+            }
             Toast.makeText(mainActivity, msq, Toast.LENGTH_LONG).show()
         }
     }

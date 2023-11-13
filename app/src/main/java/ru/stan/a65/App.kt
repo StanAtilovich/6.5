@@ -2,8 +2,10 @@ package ru.stan.a65
 
 import android.app.Application
 import androidx.work.Configuration
+import com.google.android.datatransport.runtime.dagger.Component
 import ru.stan.a65.data.firebase.FirebaseUtils
 import ru.stan.a65.data.local.database.CharacterDatabase
+import ru.stan.a65.di.ApplicationComponent
 import ru.stan.a65.di.ContextModule
 import ru.stan.a65.di.DaggerApplicationComponent
 import ru.stan.a65.presentation.Utils.NotificationUtils
@@ -22,20 +24,23 @@ class App : Application(), Configuration.Provider {
         private set
 
 
- //   lateinit var repo: CharacterRepositoryImpl
+    lateinit var appComponent: ApplicationComponent
+        private set
+
+
     override fun onCreate() {
         super.onCreate()
-
         INSTANCE = this
+        appComponent = DaggerApplicationComponent.builder()
+            .contextModule(ContextModule(this))
+            .build()
+
+
         permissionService = PermissionUtils.getInstance(this)
         //db
         db = CharacterDatabase.getInstance(INSTANCE)
 
-        firebaseInstance =
-            DaggerApplicationComponent.builder()
-                .contextModule(ContextModule(this))
-                .build()
-                .firebaseUtils()
+        firebaseInstance = appComponent.firebaseUtils()
 
         //выключаем крашлитиксы
         firebaseInstance.crashlytics.setCrashlyticsCollectionEnabled(false)
@@ -45,7 +50,10 @@ class App : Application(), Configuration.Provider {
         notificationService.createNotificationChannel()
 
 
-            // repo = CharacterRepositoryImpl(this, CharacterMapper(), db.characterDao())
+        // repo = CharacterRepositoryImpl(this, CharacterMapper(), db.characterDao())
+
+
+
     }
 
 
@@ -53,10 +61,7 @@ class App : Application(), Configuration.Provider {
         return Configuration.Builder()
             .setMinimumLoggingLevel(android.util.Log.DEBUG)
             .setWorkerFactory(
-            DaggerApplicationComponent.builder()
-                .contextModule(ContextModule(INSTANCE))
-                .build()
-                .casherViewModelModelFactory()
+                appComponent.casherViewModelModelFactory()
             )
             .build()
     }

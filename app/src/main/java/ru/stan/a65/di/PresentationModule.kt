@@ -6,11 +6,14 @@ import dagger.Provides
 import ru.stan.a65.domain.usecase.CashCharacterListUseCase
 import ru.stan.a65.domain.usecase.GetCharacterListUseCase
 import ru.stan.a65.domain.usecase.GetCharacterUseCase
+import ru.stan.a65.domain.usecase.GetPagerForCharactersUseCase
 import ru.stan.a65.domain.usecase.UploadListUseCase
 import ru.stan.a65.presentation.ui.fragmentCharacter.MainViewModel
 import ru.stan.a65.presentation.ui.fragmentCharacter.MainViewModelFactory
 import ru.stan.a65.presentation.ui.fragmentCharacterList.ListCharactersViewModel
 import ru.stan.a65.presentation.ui.fragmentCharacterList.ListViewModelFactory
+import ru.stan.a65.presentation.ui.fragmentPaging.PagingViewModel
+import ru.stan.a65.presentation.ui.fragmentPaging.PagingViewModelFactory
 import ru.stan.a65.presentation.ui.fragmentWorkManager.WorkManagerViewModel
 import ru.stan.a65.presentation.ui.fragmentWorkManager.WorkManagerViewModelFactory
 import ru.stan.a65.presentation.worker.CasherDataWorkerFactory
@@ -67,5 +70,19 @@ class PresentationModule {
     ):CasherDataWorkerFactory{
         return CasherDataWorkerFactory(
             uploadDataUseCase,cashDataUseCase)
+    }
+
+    @Provides
+    fun providePagingViewModel(
+        getPagerForCharactersUseCase: GetPagerForCharactersUseCase
+    ):PagingViewModel{
+        return PagingViewModel(getPagerForCharactersUseCase)
+    }
+
+    @Provides
+    fun providePagingViewModelFactory(
+        pagingViewModel: PagingViewModel
+    ):PagingViewModelFactory{
+        return PagingViewModelFactory(pagingViewModel)
     }
 }
