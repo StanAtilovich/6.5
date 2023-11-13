@@ -5,7 +5,6 @@ import androidx.work.Configuration
 import ru.stan.a65.data.firebase.FirebaseUtils
 import ru.stan.a65.data.local.database.CharacterDatabase
 import ru.stan.a65.di.ApplicationComponent
-import ru.stan.a65.di.ContextModule
 import ru.stan.a65.di.DaggerApplicationComponent
 import ru.stan.a65.presentation.Utils.NotificationUtils
 import ru.stan.a65.presentation.Utils.PermissionUtils
@@ -23,6 +22,7 @@ class App : Application(), Configuration.Provider {
     lateinit var permissionService: PermissionUtils
         private set
 
+
     @Inject
     lateinit var appComponent: ApplicationComponent
      //   private set
@@ -31,10 +31,13 @@ class App : Application(), Configuration.Provider {
     override fun onCreate() {
         super.onCreate()
         INSTANCE = this
-        DaggerApplicationComponent.builder()
-            .contextModule(ContextModule(this))
-            .build()
-            .inject(this)
+        DaggerApplicationComponent.factory().create(this).inject(this)
+        //делаем через апликейшион компонент перед этим надо забилдить проект
+            //  DaggerApplicationComponent.builder()
+            //      .contextModule(ContextModule(this))
+            //      .build()
+            //      .inject(this)
+
 
 
         permissionService = PermissionUtils.getInstance(this)
