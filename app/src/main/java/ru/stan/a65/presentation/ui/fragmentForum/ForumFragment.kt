@@ -18,15 +18,23 @@ import com.google.firebase.storage.ktx.storage
 import ru.stan.a65.App
 import ru.stan.a65.databinding.FragmentForumBinding
 import ru.stan.a65.presentation.ui.Activities.MainActivity
+import javax.inject.Inject
 
 class ForumFragment : Fragment() {
-    private val viewModel: ForumViewModel by viewModels {
-        App.INSTANCE.appComponent.forumViewModelModelFactory()
+    @Inject
+    lateinit var VMFactory: ForumViewModelFactory
 
+    private val viewModel: ForumViewModel by viewModels {
+VMFactory
     }
     private var _binding: FragmentForumBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: ForumAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        App.INSTANCE.appComponent.injectForumFragment(this)
+        super.onCreate(savedInstanceState)
+    }
 
     private val openDocumentLauncher = registerForActivityResult(
         object : ActivityResultContracts.OpenDocument() {

@@ -10,16 +10,24 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import ru.stan.a65.App
 import ru.stan.a65.databinding.FragmentListCharactersBinding
+import javax.inject.Inject
 
 
 class ListCharacters : Fragment() {
 
+    @Inject
+    lateinit var VMFactory: ListViewModelFactory
     private val viewModel: ListCharactersViewModel by viewModels {
-        App.INSTANCE.appComponent.listViewModelFactory()
+        VMFactory
     }
 
     private var _binding: FragmentListCharactersBinding? = null
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+       App.INSTANCE.appComponent.injectlistCharacters(this)
+        super.onCreate(savedInstanceState)
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

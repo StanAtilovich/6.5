@@ -15,48 +15,32 @@ class App : Application(), Configuration.Provider {
     lateinit var db: CharacterDatabase
         private set
 
+    @Inject
+    lateinit var appComponent: ApplicationComponent
+
+    @Inject
     lateinit var firebaseInstance: FirebaseUtils
-        private set
     lateinit var notificationService: NotificationUtils
         private set
     lateinit var permissionService: PermissionUtils
         private set
 
 
-    @Inject
-    lateinit var appComponent: ApplicationComponent
-     //   private set
-
-
     override fun onCreate() {
         super.onCreate()
         INSTANCE = this
         DaggerApplicationComponent.factory().create(this).inject(this)
-        //делаем через апликейшион компонент перед этим надо забилдить проект
-            //  DaggerApplicationComponent.builder()
-            //      .contextModule(ContextModule(this))
-            //      .build()
-            //      .inject(this)
-
-
 
         permissionService = PermissionUtils.getInstance(this)
-        //db
-        db = CharacterDatabase.getInstance(INSTANCE)
 
-        firebaseInstance = appComponent.firebaseUtils()
+        db = CharacterDatabase.getInstance(this)
 
-        //выключаем крашлитиксы
+
         firebaseInstance.crashlytics.setCrashlyticsCollectionEnabled(false)
 
-        //сдесь включаем NotificationUtils
+
         notificationService = NotificationUtils.getInstance(this)
         notificationService.createNotificationChannel()
-
-
-        // repo = CharacterRepositoryImpl(this, CharacterMapper(), db.characterDao())
-
-
     }
 
 

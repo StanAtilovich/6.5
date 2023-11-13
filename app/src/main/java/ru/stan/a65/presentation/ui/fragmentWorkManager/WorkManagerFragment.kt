@@ -13,18 +13,25 @@ import ru.stan.a65.databinding.FragmentWorkManagerBinding
 import ru.stan.a65.di.ContextModule
 import ru.stan.a65.di.DaggerApplicationComponent
 import ru.stan.a65.presentation.worker.CashingDataWorker
+import javax.inject.Inject
 
 
 class WorkManagerFragment : Fragment() {
-
+    @Inject
+    lateinit var VMFactory: WorkManagerViewModelFactory
 
     private val viewModel: WorkManagerViewModel by viewModels {
-        App.INSTANCE.appComponent.workManagerViewModelModelFactory()
+        VMFactory
 
     }
 
     private var _binding: FragmentWorkManagerBinding? = null
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        App.INSTANCE.appComponent.injectWorkManagerFragment(this)
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
