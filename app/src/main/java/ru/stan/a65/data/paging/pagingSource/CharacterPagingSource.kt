@@ -5,10 +5,11 @@ import androidx.paging.PagingState
 import ru.stan.a65.data.paging.api.RetrofitInstance
 import ru.stan.a65.data.paging.mapper.CharacterPagingMapper
 import ru.stan.a65.domain.model.CharacterPagingItem
+import javax.inject.Inject
 import kotlin.math.max
 import kotlin.math.min
 
-class CharacterPagingSource(
+class CharacterPagingSource @Inject constructor(
     private val mapper : CharacterPagingMapper
 ) : PagingSource<Int, CharacterPagingItem>() {
 

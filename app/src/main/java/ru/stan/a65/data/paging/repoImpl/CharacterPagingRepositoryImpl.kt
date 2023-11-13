@@ -4,9 +4,10 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import ru.stan.a65.data.paging.pagingSource.CharacterPagingSource
 import ru.stan.a65.domain.repository.CharacterPagingRepository
+import javax.inject.Inject
 
 
-class CharacterPagingRepositoryImpl(
+class CharacterPagingRepositoryImpl @Inject constructor(
     private val pagingSource: CharacterPagingSource
 ) : CharacterPagingRepository {
 

@@ -2,8 +2,9 @@ package ru.stan.a65.data.paging.mapper
 
 import ru.stan.a65.data.paging.dto.DataJson
 import ru.stan.a65.domain.model.CharacterPagingItem
+import javax.inject.Inject
 
-class CharacterPagingMapper {
+class CharacterPagingMapper @Inject constructor(){
     fun mapDtoPagingToItemPaging(dtoList: List<DataJson>) =
         dtoList.map {
             CharacterPagingItem(

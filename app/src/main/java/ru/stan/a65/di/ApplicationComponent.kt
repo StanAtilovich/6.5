@@ -11,8 +11,14 @@ import ru.stan.a65.presentation.worker.CasherDataWorkerFactory
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [DataModule::class, DomainModule::class, PresentationModule::class, ContextModule::class, BindImpls::class, FirebaseModule::class])
+@Component(modules = [DataModule::class,
+  //  DomainModule::class,
+    PresentationModule::class,
+      ContextModule::class,
+    BindImpls::class,
+    FirebaseModule::class])
 interface ApplicationComponent {
+
     fun listViewModelFactory(): ListViewModelFactory
     fun mainViewModelFactory(): MainViewModelFactory
     fun forumViewModelModelFactory(): ForumViewModelFactory

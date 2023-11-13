@@ -3,8 +3,9 @@ package ru.stan.a65.data.mapper
 import ru.stan.a65.data.dto.CharacterDto
 import ru.stan.a65.data.local.entity.CharacterDbModel
 import ru.stan.a65.domain.model.CharacterItem
+import javax.inject.Inject
 
-class CharacterMapper {
+class CharacterMapper @Inject constructor() {
     fun mapDtoToModel(characterDto: CharacterDto) = CharacterItem(
         id = characterDto.id,
         name = characterDto.name,
