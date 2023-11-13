@@ -5,6 +5,7 @@ import dagger.BindsInstance
 import dagger.Component
 import ru.stan.a65.App
 import ru.stan.a65.data.firebase.FirebaseUtils
+import ru.stan.a65.presentation.ui.fragmentCharacter.MainFragment
 import ru.stan.a65.presentation.ui.fragmentCharacter.MainViewModelFactory
 import ru.stan.a65.presentation.ui.fragmentCharacterList.ListViewModelFactory
 import ru.stan.a65.presentation.ui.fragmentForum.ForumViewModelFactory
@@ -40,4 +41,5 @@ interface ApplicationComponent {
 
 
     fun inject(app: App)
+    fun injectMainFragment(mainFragment: MainFragment)
 }

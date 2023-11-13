@@ -14,15 +14,24 @@ import ru.stan.a65.App
 import ru.stan.a65.databinding.FragmentMainBinding
 import ru.stan.a65.di.ContextModule
 import ru.stan.a65.di.DaggerApplicationComponent
+import javax.inject.Inject
 
 
 class MainFragment : Fragment() {
+
+    @Inject
+    lateinit var VMfactory: MainViewModelFactory
     private val viewModel: MainViewModel by viewModels {
-        App.INSTANCE.appComponent.mainViewModelFactory()
+        VMfactory
     }
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        App.INSTANCE.appComponent.injectMainFragment(this)
+        super.onCreate(savedInstanceState)
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
