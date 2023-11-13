@@ -29,7 +29,7 @@ interface ApplicationComponent {
     }
 
     fun listViewModelFactory(): ListViewModelFactory
-    fun mainViewModelFactory(): MainViewModelFactory
+   // fun mainViewModelFactory(): MainViewModelFactory
     fun forumViewModelModelFactory(): ForumViewModelFactory
 
     fun firebaseUtils(): FirebaseUtils
