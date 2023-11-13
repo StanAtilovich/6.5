@@ -1,6 +1,7 @@
 package ru.stan.a65.di
 
 import dagger.Component
+import ru.stan.a65.App
 import ru.stan.a65.data.firebase.FirebaseUtils
 import ru.stan.a65.presentation.ui.fragmentCharacter.MainViewModelFactory
 import ru.stan.a65.presentation.ui.fragmentCharacterList.ListViewModelFactory
@@ -29,4 +30,7 @@ interface ApplicationComponent {
 
     fun pagingViewModelModelFactory(): PagingViewModelFactory
     fun workManagerViewModelModelFactory(): WorkManagerViewModelFactory
+
+
+    fun inject(app: App)
 }

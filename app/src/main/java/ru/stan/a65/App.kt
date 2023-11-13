@@ -2,7 +2,6 @@ package ru.stan.a65
 
 import android.app.Application
 import androidx.work.Configuration
-import com.google.android.datatransport.runtime.dagger.Component
 import ru.stan.a65.data.firebase.FirebaseUtils
 import ru.stan.a65.data.local.database.CharacterDatabase
 import ru.stan.a65.di.ApplicationComponent
@@ -10,6 +9,7 @@ import ru.stan.a65.di.ContextModule
 import ru.stan.a65.di.DaggerApplicationComponent
 import ru.stan.a65.presentation.Utils.NotificationUtils
 import ru.stan.a65.presentation.Utils.PermissionUtils
+import javax.inject.Inject
 
 
 class App : Application(), Configuration.Provider {
@@ -23,17 +23,18 @@ class App : Application(), Configuration.Provider {
     lateinit var permissionService: PermissionUtils
         private set
 
-
+    @Inject
     lateinit var appComponent: ApplicationComponent
-        private set
+     //   private set
 
 
     override fun onCreate() {
         super.onCreate()
         INSTANCE = this
-        appComponent = DaggerApplicationComponent.builder()
+        DaggerApplicationComponent.builder()
             .contextModule(ContextModule(this))
             .build()
+            .inject(this)
 
 
         permissionService = PermissionUtils.getInstance(this)
@@ -51,7 +52,6 @@ class App : Application(), Configuration.Provider {
 
 
         // repo = CharacterRepositoryImpl(this, CharacterMapper(), db.characterDao())
-
 
 
     }
