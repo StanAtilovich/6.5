@@ -2,8 +2,9 @@ package ru.stan.a65.presentation.ui.fragmentPaging
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import javax.inject.Inject
 
-class PagingViewModelFactory(
+class PagingViewModelFactory @Inject constructor(
     private val pagingViewModel: PagingViewModel
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

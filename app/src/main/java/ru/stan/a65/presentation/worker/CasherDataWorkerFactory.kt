@@ -6,8 +6,9 @@ import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
 import ru.stan.a65.domain.usecase.CashCharacterListUseCase
 import ru.stan.a65.domain.usecase.UploadListUseCase
+import javax.inject.Inject
 
-class CasherDataWorkerFactory(
+class CasherDataWorkerFactory @Inject constructor(
     private val uploadDataUseCase: UploadListUseCase,
     private val cashDataUseCase: CashCharacterListUseCase
 ) : WorkerFactory() {

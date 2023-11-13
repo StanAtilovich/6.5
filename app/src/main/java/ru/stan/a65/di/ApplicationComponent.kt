@@ -13,7 +13,7 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [DataModule::class,
   //  DomainModule::class,
-    PresentationModule::class,
+   // PresentationModule::class,
       ContextModule::class,
     BindImpls::class,
     FirebaseModule::class])

@@ -2,9 +2,10 @@ package ru.stan.a65.presentation.ui.fragmentCharacterList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import javax.inject.Inject
 
 
-class ListViewModelFactory(
+class ListViewModelFactory @Inject constructor(
     private val listCharactersViewModel: ListCharactersViewModel
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

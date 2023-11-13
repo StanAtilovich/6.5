@@ -9,9 +9,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import ru.stan.a65.domain.model.CharacterItem
 import ru.stan.a65.domain.usecase.GetCharacterUseCase
+import javax.inject.Inject
 
 
-class MainViewModel(
+class MainViewModel @Inject constructor(
     private val getCharacterUseCase: GetCharacterUseCase
 ) : ViewModel() {
     private var _state: MutableStateFlow<ProgressState> = MutableStateFlow(value = ProgressState.Success)

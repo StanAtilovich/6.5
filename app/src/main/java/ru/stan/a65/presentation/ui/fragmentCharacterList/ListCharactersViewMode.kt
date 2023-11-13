@@ -14,11 +14,12 @@ import kotlinx.coroutines.launch
 import ru.stan.a65.domain.model.CharacterItem
 import ru.stan.a65.domain.usecase.GetCharacterListUseCase
 import ru.stan.a65.presentation.ui.fragmentCharacter.ProgressState
+import javax.inject.Inject
 
 
 private const val TAG = "CharacterListViewModel55555"
 
-class ListCharactersViewModel(
+class ListCharactersViewModel @Inject constructor(
     private val getCharactersListUseCase: GetCharacterListUseCase
 ) : ViewModel() {
 

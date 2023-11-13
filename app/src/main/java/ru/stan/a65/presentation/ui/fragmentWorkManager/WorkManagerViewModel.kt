@@ -6,9 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.work.WorkInfo
 import ru.stan.a65.App
 import ru.stan.a65.presentation.worker.CashingDataWorker
+import javax.inject.Inject
 
 
-class WorkManagerViewModel(
+class WorkManagerViewModel @Inject constructor(
     val contex: Application
 ) : ViewModel() {
 
