@@ -59,5 +59,4 @@ class App : Application(), Configuration.Provider {
     init {
         INSTANCE = this
     }
-
 }
