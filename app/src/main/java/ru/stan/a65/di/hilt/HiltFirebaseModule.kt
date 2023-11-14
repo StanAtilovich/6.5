@@ -1,4 +1,4 @@
-package ru.stan.a65.di
+package ru.stan.a65.di.hilt
 
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
@@ -10,6 +10,8 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import ru.stan.a65.data.firebase.AuthUtils
 import ru.stan.a65.data.firebase.FirebaseUtils
 import ru.stan.a65.data.repository.ForumRepositoryImpl
@@ -19,7 +21,8 @@ import ru.stan.a65.presentation.ui.fragmentForum.ForumViewModel
 import ru.stan.a65.presentation.ui.fragmentForum.ForumViewModelFactory
 
 @Module
-class FirebaseModule {
+@InstallIn(SingletonComponent::class)
+class HiltFirebaseModule {
     @Provides
     fun provideFirebaseDb(): FirebaseDatabase {
         return Firebase.database

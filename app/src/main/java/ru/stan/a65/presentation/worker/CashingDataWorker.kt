@@ -2,26 +2,27 @@ package ru.stan.a65.presentation.worker
 
 import android.app.NotificationManager
 import android.content.Context
+import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import ru.stan.a65.App
 import ru.stan.a65.R
-import ru.stan.a65.data.local.database.CharacterDatabase
-import ru.stan.a65.data.mapper.CharacterMapper
-import ru.stan.a65.data.repository.CharacterRepositoryImpl
 import ru.stan.a65.domain.usecase.CashCharacterListUseCase
 import ru.stan.a65.domain.usecase.UploadListUseCase
 
-class CashingDataWorker(
-    context: Context,
-    params: WorkerParameters,
+@HiltWorker
+class CashingDataWorker @AssistedInject constructor(
+  @Assisted context: Context,
+  @Assisted params: WorkerParameters,
    private val uploadDataUseCase : UploadListUseCase,
    private val cashDataUseCase : CashCharacterListUseCase
 ) : CoroutineWorker(context, params) {

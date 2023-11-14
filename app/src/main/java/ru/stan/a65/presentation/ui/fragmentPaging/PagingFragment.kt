@@ -12,12 +12,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import ru.stan.a65.App
 import ru.stan.a65.databinding.FragmentPagingBinding
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class PagingFragment : Fragment() {
     @Inject
     lateinit var VMFActory: PagingViewModelFactory
@@ -27,10 +28,6 @@ class PagingFragment : Fragment() {
     private var _binding: FragmentPagingBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        App.INSTANCE.appComponent.injectPagingFragment(this)
-        super.onCreate(savedInstanceState)
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

@@ -7,11 +7,14 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 import ru.stan.a65.App
 import ru.stan.a65.R
 import ru.stan.a65.databinding.ActivityMainWithDrawerBinding
 
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainWithDrawerBinding
     private lateinit var navController: NavController
@@ -24,8 +27,6 @@ class MainActivity : AppCompatActivity() {
 
         App.INSTANCE.permissionService.initMainActivityContext(this)
         App.INSTANCE.permissionService.checkPermissions()
-
-        //   initAuth()
 
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragment_container) as NavHostFragment
@@ -61,13 +62,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun isDoneAuth(): Boolean =
-        App.INSTANCE.firebaseInstance.authUtils.auth.currentUser != null
+        // поставил что говорит инет
+      //  App.INSTANCE.firebaseInstance.authUtils.auth.currentUser != null
+        FirebaseAuth.getInstance().currentUser != null
 
     private fun singUpIn() {
         if (!isDoneAuth()) {
             val intent = Intent(this, SingInActivity::class.java)
             startActivity(intent)
-            finish()
+                //  finish()
         }
     }
 

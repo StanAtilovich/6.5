@@ -15,11 +15,12 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import ru.stan.a65.App
+import dagger.hilt.android.AndroidEntryPoint
 import ru.stan.a65.databinding.FragmentForumBinding
 import ru.stan.a65.presentation.ui.Activities.MainActivity
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class ForumFragment : Fragment() {
     @Inject
     lateinit var VMFactory: ForumViewModelFactory
@@ -31,10 +32,6 @@ VMFactory
     private val binding get() = _binding!!
     private lateinit var adapter: ForumAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        App.INSTANCE.appComponent.injectForumFragment(this)
-        super.onCreate(savedInstanceState)
-    }
 
     private val openDocumentLauncher = registerForActivityResult(
         object : ActivityResultContracts.OpenDocument() {

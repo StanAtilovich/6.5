@@ -1,22 +1,19 @@
 package ru.stan.a65
 
 import android.app.Application
+import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
+import dagger.hilt.android.HiltAndroidApp
 import ru.stan.a65.data.firebase.FirebaseUtils
 import ru.stan.a65.data.local.database.CharacterDatabase
-import ru.stan.a65.di.ApplicationComponent
-import ru.stan.a65.di.DaggerApplicationComponent
 import ru.stan.a65.presentation.Utils.NotificationUtils
 import ru.stan.a65.presentation.Utils.PermissionUtils
 import javax.inject.Inject
 
-
+@HiltAndroidApp
 class App : Application(), Configuration.Provider {
     lateinit var db: CharacterDatabase
         private set
-
-    @Inject
-    lateinit var appComponent: ApplicationComponent
 
     @Inject
     lateinit var firebaseInstance: FirebaseUtils
@@ -25,11 +22,12 @@ class App : Application(), Configuration.Provider {
     lateinit var permissionService: PermissionUtils
         private set
 
+    @Inject
+    lateinit var CasherDataWorkerFactory: HiltWorkerFactory
 
     override fun onCreate() {
         super.onCreate()
         INSTANCE = this
-        DaggerApplicationComponent.factory().create(this).inject(this)
 
         permissionService = PermissionUtils.getInstance(this)
 
@@ -48,7 +46,7 @@ class App : Application(), Configuration.Provider {
         return Configuration.Builder()
             .setMinimumLoggingLevel(android.util.Log.DEBUG)
             .setWorkerFactory(
-                appComponent.casherViewModelModelFactory()
+                CasherDataWorkerFactory
             )
             .build()
     }
@@ -56,6 +54,10 @@ class App : Application(), Configuration.Provider {
     companion object {
         lateinit var INSTANCE: App
             private set
+    }
+
+    init {
+        INSTANCE = this
     }
 
 }

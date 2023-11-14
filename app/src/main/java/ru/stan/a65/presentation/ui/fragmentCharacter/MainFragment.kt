@@ -9,14 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import coil.load
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import ru.stan.a65.App
 import ru.stan.a65.databinding.FragmentMainBinding
-import ru.stan.a65.di.ContextModule
-import ru.stan.a65.di.DaggerApplicationComponent
 import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     @Inject
@@ -28,10 +26,6 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        App.INSTANCE.appComponent.injectMainFragment(this)
-        super.onCreate(savedInstanceState)
-    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

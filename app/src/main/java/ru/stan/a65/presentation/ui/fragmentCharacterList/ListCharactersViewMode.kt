@@ -19,6 +19,7 @@ import javax.inject.Inject
 
 private const val TAG = "CharacterListViewModel55555"
 
+
 class ListCharactersViewModel @Inject constructor(
     private val getCharactersListUseCase: GetCharacterListUseCase
 ) : ViewModel() {
