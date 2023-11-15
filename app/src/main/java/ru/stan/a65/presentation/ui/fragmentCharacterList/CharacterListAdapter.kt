@@ -1,37 +1,36 @@
 package ru.stan.a65.presentation.ui.fragmentCharacterList
 
-
-import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import ru.stan.a65.databinding.CharacterItemBinding
 import ru.stan.a65.domain.model.CharacterItem
 
 
-class CharacterListAdapter
-    : androidx.recyclerview.widget.ListAdapter<CharacterItem, CharacterListAdapter.CharacterListViewHolder>(
+class CharacterListAdapter : androidx.recyclerview.widget.ListAdapter<CharacterItem, CharacterListAdapter.CharacterListViewHolder>(
     callBack
 ) {
+    class CharacterListViewHolder(private val composeView: ComposeView) :
+        RecyclerView.ViewHolder(composeView) {
+        fun bind(characterItem: CharacterItem) {
+            composeView
+                .setContent {
+                    CharacterItemCompose(characterItem)
+                }
 
-    class CharacterListViewHolder(val binding: CharacterItemBinding): RecyclerView.ViewHolder(binding.root)
-    // {
-    //     val imageView = itemView.findViewById<ImageView>(R.id.image_character)
-    //     val textVName = itemView.findViewById<TextView>(R.id.tv_name)
-    //     val textVHouse = itemView.findViewById<TextView>(R.id.tvHouse)
-    // }
+        }
+    }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterListViewHolder {
-        val binding = CharacterItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return CharacterListViewHolder(binding)
+    override fun onCreateViewHolder(
+        parent: ViewGroup, viewType: Int
+    ): CharacterListViewHolder {
+        val composeView = ComposeView(parent.context)
+        return CharacterListViewHolder(composeView)
     }
 
 
     override fun onBindViewHolder(holder: CharacterListViewHolder, position: Int) {
         val characterItem = getItem(position)
-        holder.binding.imageCharacter.load(characterItem.imageUrl)
-        holder.binding.tvName.text = characterItem.name
-        holder.binding.tvHouse.text = characterItem.hogwartsHouse
+        holder.bind(characterItem)
     }
 }
