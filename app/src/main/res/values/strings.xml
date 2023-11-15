@@ -91,4 +91,6 @@
     <string name="title_room">RoomDb</string>
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
     <string name="title_paging">Paging</string>
+    <string name="background_image">background image</string>
+    <string name="Image_Of_character">Image of Character</string>
 </resources>
