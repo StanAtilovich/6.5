@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">6.5</string>
+    <string name="app_name">Harry Potter App</string>
     <string name="add">add</string>
     <string name="button_text">Рандомный выбор</string>
     <string name="update">update</string>
@@ -93,4 +93,7 @@
     <string name="title_paging">Paging</string>
     <string name="background_image">background image</string>
     <string name="Image_Of_character">Image of Character</string>
+    <string name="image_url">Нет картинки</string>
+    <string name="Notifu">Скачивание бекграунда</string>
+    <string name="stop_background">Остановить скачивание</string>
 </resources>

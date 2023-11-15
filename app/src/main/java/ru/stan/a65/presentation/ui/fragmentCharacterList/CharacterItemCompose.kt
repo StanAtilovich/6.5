@@ -20,27 +20,50 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.SubcomposeAsyncImage
 import ru.stan.a65.R
 import ru.stan.a65.domain.model.CharacterItem
+import ru.stan.a65.domain.model.CharacterPagingItem
+import java.util.Random
 
 @Composable
-fun CharacterItemCompose(characterItem: CharacterItem) {
+fun CharacterItemCompose(
+    characterItem: CharacterItem? = null,
+    characterPagingItem: CharacterPagingItem? = null
+) {
+    if (characterItem != null) {
+        CharacterCard(characterItem)
+    } else {
+        val characterMapper = CharacterItem(
+            id= Random().nextInt(),
+            name = characterPagingItem?.name ?: "N/D",
+            hogwartsHouse = characterPagingItem?.hogwartsHouse ?: "N/D",
+            imageUrl = characterPagingItem?.imageUrl ?: "N/D"
+        )
+        CharacterCard(characterMapper)
+    }
+
+
+}
+
+@Composable
+private fun CharacterCard(characterItem: CharacterItem?) {
     Card(
         elevation = CardDefaults.cardElevation(16.dp),
         colors = CardDefaults.cardColors(containerColor = colorResource(R.color.background_card)),
-        modifier = Modifier.fillMaxWidth().padding(8.dp, 4.dp)
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp, 4.dp)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.width(4.dp))
             SubcomposeAsyncImage(
-                model = characterItem.imageUrl,
+                model = if (characterItem!!.imageUrl != "N/D") characterItem.imageUrl else R.drawable.empty_face,
                 contentDescription = "character image",
                 loading = { CircularProgressIndicator() },
                 modifier = Modifier
@@ -56,16 +79,4 @@ fun CharacterItemCompose(characterItem: CharacterItem) {
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun OurPreview() {
-    val item = CharacterItem(
-        0,
-        "Harry Potter",
-        "Griffindor",
-        "https://raw.githubusercontent.com/fedeperin/harry-potter-api-english/main/images/harry_potter.png"
-    )
-    CharacterItemCompose(item)
 }
