@@ -22,4 +22,5 @@ FirebaseRecyclerAdapter, Выбор картинки, Firebase.storage...putFile
 
 6) backend with paging, Подготовка фрагмента, Применение paging ,Внедрение зависимостей, Dagger, Workmanager, Зависимости Worker вручную, Зависимости Worker через Dagger,Dagger singletone Dagger,Hilt,  Hilt и HiltWorker
 
+
 7) Поигрался с основами @Composable функции и осуществляем миграцию макетов(layout) из xml в jetpack compos
