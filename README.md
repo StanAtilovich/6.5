@@ -3,7 +3,11 @@
 
 
 1)Загружаем из сервера список персонажей из Гарри Поттера с помощью библиотеки Retrofit и отображаем в UI в соответствии с Clean architecture
+
+
 2)Исследуем технологию локального хранения данных в базе Room 
+
+
 3)Выполнил задачи:
 Фрагменты и низкоуровневая навигация
 Передавча параметров в фрагмент через Bundle
@@ -19,6 +23,8 @@ ItemTouchHelper и DiffUtil
 ListAdapter
 Двухсторонний dataBinding
 runCatching
+
+
 4)Задачи:
 Подключение Firebase
 Crashlytics
@@ -41,6 +47,8 @@ googleAccount.signOut()
 FirebaseRecyclerAdapter
 Выбор картинки
 Firebase.storage...putFile(uri)
+
+
 5)Андройд архитектура:
 Clean architecture
 ViewModel
@@ -56,6 +64,8 @@ WorkManager_theory
 WorkManager_practice
 FirebaseMessaging push notifications
 SwipeRefreshLayout
+
+
 6)backend with paging
 Подготовка фрагмента
 Знакомство с Paging
@@ -69,4 +79,6 @@ Dagger singletone
 Dagger практика
 Hilt
 Hilt и HiltWorker
+
+
 7)Поигрался с основами @Composable функции и осуществляем миграцию макетов(layout) из xml в jetpack compos
