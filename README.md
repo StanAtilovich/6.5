@@ -1,26 +1,10 @@
 6.5 HARRY POTTER APP
-Приложение сожержит 5 вкладок: Получаем иноформацию с 2 серверов и чат(Firebase). Также произвел миграцию jetpack compos.
+"Добро пожаловать в мир Гарри Поттера! Harry Potter App – это увлекательное приложение, созданное с целью погрузить вас в волшебную вселенную Гарри Поттера. Исследуйте пять увлекательных вкладок, предоставляющих доступ к информации из двух серверов с возможностью чата через Firebase. Мы также произвели успешную миграцию на jetpack компоненты для улучшения пользовательского опыта.
 
-1) Загружаем из сервера список персонажей из Гарри Поттера с помощью библиотеки Retrofit 
-и отображаем в UI в соответствии с Clean architecture
+Приложение умело загружает списки персонажей из мира Гарри Поттера из сервера при помощи библиотеки Retrofit, а затем аккуратно отображает их в соответствии с основными принципами Clean architecture. Мы также провели исследование технологии локального хранения данных в базе Room, что позволило нам создать удобную среду для пользователей.
 
-2) Исследуем технологию локального хранения данных в базе Room
+Процесс разработки включал выполнение ряда задач, включая работу с фрагментами, навигацию и RecyclerView, а также интеграцию Firebase, включая миграцию в AuthUI, работу с Firebase Database, и Firebase Storage. В приложении также реализована полная структура архитектуры Firebase, что обеспечивает безопасность и надежность функционирования.
 
-3) Выполнил задачи: Фрагменты и низкоуровневая навигация, Передавча параметров в фрагмент через Bundle,
-ЖЦ фрагментов, Jetpack Navigation, SafeArgs для передачи параметров, setupActionBarWithNavController,
-Bottom navigation, onSupportNavigateUp(), Знакомство с RecyclerView, Recyclerview.Adapter, ItemTouchHelper 
-и DiffUtil, ListAdapter, Двухсторонний dataBinding, runCatching
+Мы также позанимались низкоуровневой работой с серверами, использовали архитектуру MVP и работали с Jetpack Compose для обеспечения современного и удобного пользовательского интерфейса. А все это на фоне использования современных инструментов и технологий, таких как Dagger и Hilt.
 
-4) Задачи: Подключение Firebase, Crashlytics Tools - Firebase, DrawerLayout,NavigationView, AlertDialog.Builder().setView().show(),
-Firebase.auth.createUser.sendVerification, Рефакторинг, Firebase.auth.signInWithEmailAndPasword(), Firebase.auth.sendPasswordResetEmail(email),
-signInWithCredential(credential), task.exception.message, linkWithCredential(), googleAccount.signOut(), Миграция в AuthUI,
-Добавление фрагмента ,Отправка данных в Firebase.database, Получение данных, Подготовка layout-а для FirebaseRecyclerAdapter,
-FirebaseRecyclerAdapter, Выбор картинки, Firebase.storage...putFile(uri)
-
-5) Андройд архитектура: Clean architecture, ViewModel ,BindingAdapter, viewModelScope, double check при инстанциации ,Паттерн Repository,
-Архитектура Firebase, Notifications, Permissions, Foreground services, WorkManager_practice, FirebaseMessaging push notifications, SwipeRefreshLayout
-
-6) backend with paging, Подготовка фрагмента, Применение paging ,Внедрение зависимостей, Dagger, Workmanager, Зависимости Worker вручную, Зависимости Worker через Dagger,Dagger singletone Dagger,Hilt,  Hilt и HiltWorker
-
-
-7) Поигрался с основами @Composable функции и осуществляем миграцию макетов(layout) из xml в jetpack compos
+Это приложение - это настоящий портал в мир Гарри Поттера, созданный с применением передовых технологий, чтобы ваши впечатления от мира волшебства были ещё более незабываемыми. Погрузитесь в мир Гарри Поттера, чувствуя уверенность в надежности и современности приложения."
